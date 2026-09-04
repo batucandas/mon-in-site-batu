@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MON-IN — İç Mimarlık &amp; Mimarlık | Ankara · Bodrum</title>
+<meta name="description" content="MON-IN, Ankara ve Bodrum merkezli iç mimarlık ve mimarlık stüdyosu. Konut, ofis, kamu ve ticari projelerde yenilikçi, sürdürülebilir tasarım çözümleri.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F5F1;
+    --ink: #1C1B19;
+    --stone: #6B6558;
+    --olive: #7C8A6E;
+    --line: #DEDACD;
+    --card: #EFEBE1;
+    --white: #FFFFFF;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  img{ display:block; max-width:100%; }
+
+  .jp{
+    font-family:'Inter', sans-serif;
+    font-size:0.7em;
+    color:var(--stone);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 48px;
+    mix-blend-mode:normal;
+    transition:background .4s ease, padding .4s ease;
+  }
+
+  header.scrolled{
+    background:rgba(247,245,241,0.92);
+    backdrop-filter:blur(8px);
+    padding:18px 48px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    font-weight:500;
+    letter-spacing:0.02em;
+    color:var(--ink);
+  }
+  .logo span{ color:var(--olive); }
+
+  nav{ display:flex; gap:36px; align-items:center; }
+
+  nav a{
+    font-size:0.92rem;
+    color:var(--ink);
+    position:relative;
+    padding-bottom:4px;
+  }
+
+  nav a .jp{ display:block; font-size:0.62rem; margin-top:1px; opacity:0.7; }
+
+  nav a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--ink);
+    transition:width .3s ease;
+  }
+  nav a:hover::after{ width:100%; }
+
+  .nav-toggle{ display:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+  }
+
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    background-image:url('https://mon-in.com/wp-content/uploads/2020/07/ccs1.jpg');
+    background-size:cover;
+    background-position:center 40%;
+    filter:saturate(0.85) brightness(0.7);
+    transform:scale(1.04);
+  }
+
+  .hero-scrim{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(28,27,25,0.15) 0%, rgba(28,27,25,0.1) 40%, rgba(28,27,25,0.75) 100%);
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:2;
+    padding:0 48px 72px;
+    color:var(--bg);
+  }
+
+  .hero-eyebrow{
+    font-size:0.9rem;
+    color:#E4E0D3;
+    margin-bottom:18px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .hero-eyebrow .jp{ color:#B9B4A2; font-size:0.85rem; }
+
+  .hero-title{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(2.6rem, 7vw, 6rem);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    max-width:14ch;
+  }
+
+  .hero-title em{ font-style:italic; font-weight:300; color:#D9D4C4; }
+
+  .hero-sub{
+    margin-top:26px;
+    max-width:44ch;
+    font-size:1.05rem;
+    line-height:1.6;
+    color:#E9E6DC;
+    font-weight:300;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    right:48px;
+    bottom:32px;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#D9D4C4;
+    font-size:0.78rem;
+  }
+  .scroll-cue .line{
+    width:1px; height:40px;
+    background:#D9D4C4;
+    opacity:0.6;
+  }
+
+  /* ---------- Section shared ---------- */
+  section{ padding:120px 48px; }
+
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:64px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+
+  .kicker{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    color:var(--stone);
+    font-size:0.85rem;
+    margin-bottom:14px;
+  }
+
+  .kicker .jp{ font-size:0.85rem; }
+
+  .section-title{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(2rem, 4vw, 3.2rem);
+    letter-spacing:-0.01em;
+    max-width:16ch;
+  }
+
+  .section-note{
+    max-width:34ch;
+    color:var(--stone);
+    font-size:0.98rem;
+    line-height:1.65;
+    font-weight:300;
+  }
+
+  /* ---------- About ---------- */
+  .about{ background:var(--bg); }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:80px;
+    align-items:start;
+  }
+
+  .about-text p{
+    font-size:1.08rem;
+    line-height:1.85;
+    color:#3B3934;
+    font-weight:300;
+    margin-bottom:24px;
+    max-width:56ch;
+  }
+
+  .about-figures{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:48px;
+  }
+
+  .figure{
+    background:var(--bg);
+    padding:28px 24px;
+  }
+
+  .figure .num{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    color:var(--ink);
+  }
+  .figure .lbl{
+    margin-top:6px;
+    font-size:0.82rem;
+    color:var(--stone);
+  }
+
+  .about-image{
+    position:relative;
+  }
+  .about-image img{
+    width:100%;
+    height:560px;
+    object-fit:cover;
+  }
+  .about-image .caption{
+    margin-top:14px;
+    font-size:0.8rem;
+    color:var(--stone);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  .team-row{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line);
+    border-top:1px solid var(--line);
+    padding-top:1px;
+  }
+  .team-member{
+    background:var(--bg);
+    padding:22px 4px 0 0;
+  }
+  .team-member .name{
+    font-family:'Fraunces', serif;
+    font-size:1.02rem;
+  }
+  .team-member .role{
+    font-size:0.78rem;
+    color:var(--stone);
+    margin-top:4px;
+    line-height:1.5;
+  }
+
+  /* ---------- Projects ---------- */
+  .projects{ background:var(--card); }
+
+  .project-scroll{
+    display:flex;
+    gap:2px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:8px;
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+  }
+  .project-scroll::-webkit-scrollbar{ display:none; }
+
+  .project-card{
+    position:relative;
+    flex:0 0 auto;
+    width:min(78vw, 460px);
+    scroll-snap-align:start;
+    background:var(--ink);
+    overflow:hidden;
+  }
+
+  .project-card img{
+    width:100%;
+    height:560px;
+    object-fit:cover;
+    opacity:0.92;
+    transition:transform .6s ease;
+  }
+  .project-card:hover img{ transform:scale(1.045); }
+
+  .project-info{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:28px 26px;
+    background:linear-gradient(180deg, transparent 0%, rgba(20,19,17,0.88) 75%);
+    color:var(--bg);
+  }
+
+  .project-info .p-type{
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;
+    font-weight:400;
+  }
+  .project-info .p-meta{
+    margin-top:8px;
+    font-size:0.78rem;
+    color:#CFCABB;
+    line-height:1.6;
+  }
+
+  .project-hint{
+    margin-top:28px;
+    font-size:0.82rem;
+    color:var(--stone);
+  }
+
+  /* ---------- Intelligence strip ---------- */
+  .intel{
+    position:relative;
+    background:var(--ink);
+    color:var(--bg);
+    padding:120px 48px;
+    overflow:hidden;
+  }
+
+  .intel-bg{
+    position:absolute;
+    inset:0;
+    background-image:url('https://mon-in.com/wp-content/uploads/2020/07/site1-784x1024.jpg');
+    background-size:cover;
+    background-position:center;
+    opacity:0.14;
+    filter:grayscale(0.4);
+  }
+
+  .intel-inner{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+
+  .intel .kicker{ color:#B9B4A2; }
+  .intel .kicker .jp{ color:#8B8676; }
+  .intel .section-title{ color:var(--bg); max-width:13ch; }
+  .intel p{
+    color:#C9C4B5;
+    font-size:1.02rem;
+    line-height:1.75;
+    font-weight:300;
+    max-width:50ch;
+  }
+  .intel-link{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.92rem;
+    border-bottom:1px solid #6b6658;
+    padding-bottom:6px;
+    width:fit-content;
+    color:var(--bg);
+  }
+
+  .intel-domains{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:1px;
+    background:#37352F;
+    margin-top:40px;
+  }
+  .intel-domain{
+    background:var(--ink);
+    padding:22px 18px;
+  }
+  .intel-domain .d-title{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    color:var(--bg);
+    margin-bottom:8px;
+  }
+  .intel-domain .d-desc{
+    font-size:0.8rem;
+    color:#A6A192;
+    line-height:1.55;
+  }
+
+  /* ---------- Contact + Newsletter ---------- */
+  .contact{
+    background:var(--bg);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+  }
+
+  .contact-block .kicker{ margin-bottom:20px; }
+
+  .contact-detail{
+    margin-bottom:28px;
+  }
+  .contact-detail .label{
+    font-size:0.78rem;
+    color:var(--stone);
+    margin-bottom:6px;
+  }
+  .contact-detail .value{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+  }
+  .contact-detail a.value:hover{ color:var(--olive); }
+
+  .social-row{
+    display:flex;
+    gap:22px;
+    margin-top:36px;
+  }
+  .social-row a{
+    font-size:0.88rem;
+    padding-bottom:4px;
+    border-bottom:1px solid var(--line);
+  }
+  .social-row a:hover{ border-color:var(--ink); }
+
+  .newsletter-box{
+    background:var(--card);
+    padding:48px 44px;
+    align-self:start;
+  }
+  .newsletter-box h3{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:1.7rem;
+    margin-bottom:12px;
+  }
+  .newsletter-box p{
+    font-size:0.95rem;
+    color:var(--stone);
+    line-height:1.6;
+    margin-bottom:28px;
+    max-width:38ch;
+  }
+
+  .nl-form{
+    display:flex;
+    border-bottom:1.5px solid var(--ink);
+    padding-bottom:12px;
+  }
+  .nl-form input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    font-family:'Inter', sans-serif;
+    font-size:1rem;
+    color:var(--ink);
+  }
+  .nl-form input::placeholder{ color:#9A9585; }
+  .nl-form button{
+    background:none;
+    border:none;
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+    color:var(--ink);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nl-form button svg{ transition:transform .25s ease; }
+  .nl-form button:hover svg{ transform:translateX(4px); }
+
+  .nl-status{
+    margin-top:14px;
+    font-size:0.82rem;
+    color:var(--olive);
+    min-height:1.2em;
+  }
+
+  .nl-fine{
+    margin-top:16px;
+    font-size:0.74rem;
+    color:#9A9585;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:32px 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--line);
+    font-size:0.8rem;
+    color:var(--stone);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 920px){
+    header{ padding:20px 24px; }
+    header.scrolled{ padding:14px 24px; }
+    nav{
+      position:fixed;
+      top:0; right:0;
+      height:100vh;
+      width:min(78vw, 320px);
+      background:var(--bg);
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      gap:28px;
+      padding:48px;
+      transform:translateX(100%);
+      transition:transform .4s ease;
+      border-left:1px solid var(--line);
+    }
+    nav.open{ transform:translateX(0); }
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      z-index:200;
+      padding:6px;
+    }
+    .nav-toggle span{
+      width:22px; height:1.5px;
+      background:var(--ink);
+      display:block;
+    }
+
+    section{ padding:80px 24px; }
+    .hero-content{ padding:0 24px 56px; }
+    .scroll-cue{ display:none; }
+
+    .about-grid{ grid-template-columns:1fr; gap:48px; }
+    .about-image img{ height:360px; }
+    .team-row{ grid-template-columns:1fr 1fr; row-gap:24px; }
+
+    .intel{ padding:64px 24px; }
+    .intel-inner{ grid-template-columns:1fr; gap:32px; }
+    .intel-domains{ grid-template-columns:1fr; }
+
+    .contact{ grid-template-columns:1fr; gap:56px; }
+    .newsletter-box{ padding:36px 28px; }
+
+    footer{ flex-direction:column; align-items:flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a href="#top" class="logo">MON<span>-</span>IN</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="mainNav">
+    <a href="#hakkinda">Hakkımızda <span class="jp">概要</span></a>
+    <a href="#projeler">Projeler <span class="jp">プロジェクト</span></a>
+    <a href="#intelligence">Intelligence <span class="jp">技術</span></a>
+    <a href="#iletisim">İletişim <span class="jp">連絡</span></a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Ankara — Bodrum <span class="jp">建築 · インテリア</span></div>
+    <h1 class="hero-title">Mekânı <em>yeniden</em><br>düşünüyoruz</h1>
+    <p class="hero-sub">MON-IN, mimarlık ve iç mimarlıkta özgün, sürdürülebilir tasarımlar üreten küçük bir stüdyo — Intelligence koluyla da bilişim güvenliği ve uzay sistemleri alanında çözümler sunar.</p>
+  </div>
+  <div class="scroll-cue"><span class="line"></span>Aşağı kaydırın</div>
+</section>
+
+<section class="about" id="hakkinda">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Hakkımızda <span class="jp">私たちについて</span></div>
+      <h2 class="section-title">Küçük bir stüdyo, büyük bir dikkat</h2>
+    </div>
+    <p class="section-note">Ankara ve Bodrum ofislerimizden, mimari ile teknolojiyi aynı çatı altında buluşturan sınırlı sayıda projeye odaklanıyoruz.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>MON-IN, İstanbul'un ölçekli mimarlık bürolarının aksine, bilinçli olarak küçük kalan bir stüdyo. Her projeyi sınırlı sayıda tutarak, müşteri amaç ve ihtiyaçlarına birebir odaklanan mimari, iç mimari ve mühendislik tasarımları üretiyoruz. Yenilikçi, kolay uygulanabilir ve özgün çözümler üretirken fayda ve maliyet dengesini ön planda tutuyoruz.</p>
+      <p>Ofis, konut, kafe, restoran ve endüstriyel yapılar gibi geniş bir portföyde, sürdürülebilir tasarım ve malzeme seçimleriyle daha yaşanabilir çevrelerin oluşturulmasına katkıda bulunduğumuza inanıyoruz. 3D görselleştirme ve 360° VR turlarla, projenin her aşamasını müşterilerimizle birlikte deneyimliyoruz. Stüdyonun ikinci kolu olan Intelligence ile birlikte, tasarımı mekânın ötesine, veri güvenliği ve akıllı sistemlere kadar taşıyoruz.</p>
+
+      <div class="about-figures">
+        <div class="figure"><div class="num">2015</div><div class="lbl">Kuruluş</div></div>
+        <div class="figure"><div class="num">15+</div><div class="lbl">Tamamlanan proje</div></div>
+        <div class="figure"><div class="num">2</div><div class="lbl">Ofis — Ankara, Bodrum</div></div>
+        <div class="figure"><div class="num">4</div><div class="lbl">Kişilik çekirdek ekip</div></div>
+      </div>
+
+      <div class="team-row" style="grid-template-columns:1fr 1fr;">
+        <div class="team-member">
+          <div class="name">Çağkan Yazıcı</div>
+          <div class="role">İç Mimar, Kurucu Ortak<br>Bilkent Üniversitesi</div>
+        </div>
+        <div class="team-member">
+          <div class="name">Ali Yazıcı</div>
+          <div class="role">Kurucu Ortak — MON-IN Intelligence<br>Uzay Sistemleri, Kriptografi &amp; Bilişim Güvenliği</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-image">
+      <img src="https://mon-in.com/wp-content/uploads/2020/07/site1-784x1024.jpg" alt="MON-IN tasarım detayı, Ankara ofis projesi" loading="lazy">
+      <div class="caption"><span>Ofis Tasarımı, Ankara</span><span>2019</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projeler">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Projeler <span class="jp">プロジェクト</span></div>
+      <h2 class="section-title">Seçilmiş işlerimiz</h2>
+    </div>
+    <p class="section-note">Özel konutlardan kamu yapılarına, her ölçekte uygulanmış tasarımlarımızdan bir kesit.</p>
+  </div>
+
+  <div class="project-scroll">
+    <div class="project-card">
+      <img src="https://mon-in.com/wp-content/uploads/2020/06/20200321_181545555889999-1-745x1024.jpg" alt="Bodrum Gümüşlük özel villa iç mekan tasarımı" loading="lazy">
+      <div class="project-info">
+        <div class="p-type">Özel Villa</div>
+        <div class="p-meta">İç Mimari Tasarım &amp; Takip Hizmetleri<br>Gümüşlük, Bodrum · 2020</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://mon-in.com/wp-content/uploads/2020/07/d1-784x1024.jpg" alt="Dersim Şehir Müzesi iç mekan tasarımı" loading="lazy">
+      <div class="project-info">
+        <div class="p-type">Dersim Şehir Müzesi</div>
+        <div class="p-meta">İç Mimari Tasarım · Kültür ve Turizm Bakanlığı<br>Tunceli · 2.000 m² · 2016</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://mon-in.com/wp-content/uploads/2020/07/milaslum1-784x1024.jpg" alt="Milas Müzesi iç mekan tasarımı" loading="lazy">
+      <div class="project-info">
+        <div class="p-type">Milas Müzesi</div>
+        <div class="p-meta">İç Mimari Tasarım · Kültür ve Turizm Bakanlığı<br>Muğla · 500 m² · 2016</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://mon-in.com/wp-content/uploads/2019/09/d1-1-1024x574.jpg" alt="Amasya Merzifon Havalimanı mimari projesi" loading="lazy">
+      <div class="project-info">
+        <div class="p-type">Amasya Merzifon Havalimanı</div>
+        <div class="p-meta">Mimari Proje · DHMİ Genel Müdürlüğü<br>Amasya · 100.000 m² · 2019</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://mon-in.com/wp-content/uploads/2020/06/int1-773x1024.jpg" alt="Angora Sitesi konut tasarımı" loading="lazy">
+      <div class="project-info">
+        <div class="p-type">Angora Sitesi Konut</div>
+        <div class="p-meta">İç Mimari Tasarım<br>Ankara · 200 m² · 2019</div>
+      </div>
+    </div>
+  </div>
+  <div class="project-hint">Tüm projeleri görmek için bizimle iletişime geçin.</div>
+</section>
+
+<section class="intel" id="intelligence">
+  <div class="intel-bg"></div>
+  <div class="intel-inner">
+    <div>
+      <div class="kicker">Intelligence <span class="jp">技術</span></div>
+      <h2 class="section-title">Mekânın ötesinde güvenlik ve sistem tasarımı</h2>
+    </div>
+    <div>
+      <p>MON-IN Intelligence, tasarladığımız mekânları ileri teknolojiyle buluşturur. Kurucu ortağımız Ali Yazıcı'nın uzay sistemleri, kriptografi ve bilişim güvenliği alanındaki uzmanlığıyla; akıllı bina sistemlerinden kurumsal veri güvenliğine uzanan bir çözüm hattı sunuyoruz.</p>
+
+      <div class="intel-domains">
+        <div class="intel-domain">
+          <div class="d-title">Bilişim Güvenliği</div>
+          <div class="d-desc">Kurumsal ağlar ve akıllı bina sistemleri için güvenlik mimarisi, risk analizi ve sızma testleri.</div>
+        </div>
+        <div class="intel-domain">
+          <div class="d-title">Kriptografi</div>
+          <div class="d-desc">Veri şifreleme, güvenli iletişim protokolleri ve kimlik doğrulama sistemleri tasarımı.</div>
+        </div>
+        <div class="intel-domain">
+          <div class="d-title">Uzay Sistemleri</div>
+          <div class="d-desc">Uydu haberleşmesi ve uzay teknolojileri alanında danışmanlık ve sistem mühendisliği.</div>
+        </div>
+      </div>
+
+      <a class="intel-link" href="#iletisim">Detaylı bilgi alın →</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="iletisim">
+  <div class="contact-block">
+    <div class="kicker">İletişim <span class="jp">連絡</span></div>
+    <h2 class="section-title" style="margin-bottom:40px;">Projenizi konuşalım</h2>
+
+    <div class="contact-detail">
+      <div class="label">E-posta</div>
+      <a class="value" href="mailto:info@mon-in.com">info@mon-in.com</a>
+    </div>
+    <div class="contact-detail">
+      <div class="label">Telefon</div>
+      <a class="value" href="tel:+903129110818">+90 312 911 08 18</a>
+    </div>
+    <div class="contact-detail">
+      <div class="label">Ankara Ofis</div>
+      <div class="value" style="font-size:1.05rem; line-height:1.5;">Kızılırmak Mah. 1443 Cad. No: 25B İç Kapı No: 8<br>Çankaya, Ankara</div>
+    </div>
+    <div class="contact-detail">
+      <div class="label">Bodrum Ofis</div>
+      <div class="value" style="font-size:1.05rem;">Bodrum, Muğla</div>
+    </div>
+
+    <div class="social-row">
+      <a href="https://www.instagram.com/monininteriors/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/mon-in/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="newsletter-box">
+    <h3>Bültenimize katılın</h3>
+    <p>Yeni projelerimiz, tasarım notlarımız ve haberlerimizden ilk siz haberdar olun.</p>
+    <form class="nl-form" id="nlForm">
+      <input type="email" placeholder="E-posta adresiniz" required id="nlEmail">
+      <button type="submit">
+        Katıl
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+          <path d="M1 5H15M15 5L11 1M15 5L11 9" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </button>
+    </form>
+    <div class="nl-status" id="nlStatus"></div>
+    <div class="nl-fine">Kaydolarak MON-IN'den e-posta almayı kabul edersiniz. İstediğiniz zaman ayrılabilirsiniz.</div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 MON-IN Interiors &amp; Intelligence</div>
+  <div>Ankara · Bodrum, Türkiye</div>
+</footer>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+  });
+  mainNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mainNav.classList.remove('open'));
+  });
+
+  // Newsletter form (front-end only demo)
+  const nlForm = document.getElementById('nlForm');
+  const nlStatus = document.getElementById('nlStatus');
+  nlForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('nlEmail').value;
+    if(email){
+      nlStatus.textContent = 'Teşekkürler — listemize eklendiniz.';
+      nlForm.reset();
+    }
+  });
+</script>
+
+</body>
+</html>
