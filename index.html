@@ -49,6 +49,7 @@
   .nav-toggle span{ display:block; width:22px; height:1.5px; background:var(--ink);
     transition:transform .3s ease, background .3s ease; }
   header.on-dark .nav-toggle span{ background:#fff; }
+  .nav-scrim{ display:none; }
 
   /* ================= SLIDES / PAGINATION ================= */
   #slides{ position:relative; width:100%; height:var(--vh); overflow:hidden; }
@@ -144,10 +145,6 @@
   .discipline-visual{ height:42vh; min-height:280px; position:relative; overflow:hidden; }
   .discipline-visual img{ width:100%; height:100%; object-fit:cover; }
   .image-caption{ position:absolute; left:16px; bottom:14px; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; background:rgba(0,0,0,.62); color:#fff; padding:6px 9px; }
-  .tech-visual{ background:#101010; position:relative; overflow:hidden; }
-  .pattern-dots{ position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.16) 1px, transparent 1.6px); background-size:26px 26px; }
-  .pattern-mark{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:.5; }
-  .pattern-mark img{ width:34%; filter:invert(1); opacity:.5; }
 
   /* ---------- Intersection ---------- */
   .intersection{ justify-content:center; padding:0 48px; }
@@ -254,10 +251,15 @@
     .nav-toggle{ display:flex; }
     /* the panel is always light, so its links and bars stay dark even over the dark hero */
     header.nav-open nav{ display:flex; flex-direction:column; gap:0;
-      position:fixed; left:0; right:0; top:64px; bottom:0; z-index:490;
-      background:var(--bg); padding:10px 20px 40px; overflow-y:auto; }
-    header.nav-open nav a{ color:var(--ink); font-size:1.05rem; padding:17px 2px;
+      position:fixed; left:0; right:0; top:64px; z-index:490;
+      max-height:calc(100% - 64px); overflow-y:auto;
+      background:rgba(247,247,245,.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line); padding:4px 20px 12px; }
+    header.nav-open .nav-scrim{ display:block; position:fixed; left:0; right:0; top:64px; bottom:0;
+      z-index:480; background:rgba(20,20,18,.34); }
+    header.nav-open nav a{ color:var(--ink); font-size:1.02rem; padding:15px 2px;
       border-bottom:1px solid var(--line); }
+    header.nav-open nav a:last-child{ border-bottom:0; }
     header.nav-open nav a::after{ display:none; }
     header.nav-open .nav-toggle span{ background:var(--ink); }
     header.nav-open .nav-toggle span:first-child{ transform:translateY(3.25px) rotate(45deg); }
@@ -302,6 +304,7 @@
 <body>
 
 <header id="siteHeader">
+  <div class="nav-scrim" id="navScrim"></div>
   <a class="brand" href="#" data-goto="0">
     <img src="assets/logo/mon-in.png" alt="MON-IN">
     <span class="brand-name">MON-IN</span>
@@ -372,6 +375,19 @@
 <!-- 3 PEOPLE — ALİ -->
 <section class="slide people tint">
   <div class="people-wrap">
+    <div class="people-head reveal">
+      <div class="kicker">PEOPLE BEHIND MON-IN</div>
+      <h2 data-en="An architect and an engineer. One studio." data-tr="Bir mimar, bir mühendis. Tek stüdyo.">Bir mimar, bir mühendis. Tek stüdyo.</h2>
+    </div>
+    <div class="people-grid single">
+      <div class="person-card reveal">
+        <div class="person-photo"><img src="assets/people/cagkan-yazici.jpg" alt="Çağkan Yazıcı" loading="lazy"></div>
+        <div class="founder-index">FOUNDER</div>
+        <h3 class="founder-name">ÇAĞKAN YAZICI</h3>
+        <div class="founder-role">FOUNDER &amp; CREATIVE DIRECTOR · INTERIOR ARCHITECT / DIGITAL ARTIST · BILKENT UNIVERSITY</div>
+        <p class="founder-desc" data-en="Founder and creative lead of MON-IN. Leads the studio's design language, visualization and spatial experience across architecture and interior architecture projects." data-tr="MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.">MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.</p>
+      </div>
+    </div>
     <div class="people-grid single">
       <div class="person-card reveal">
         <div class="person-photo"><img src="assets/people/ali-yazici.jpg" alt="M. Ali Yazıcı" loading="lazy"></div>
@@ -436,9 +452,9 @@
       <p data-en="Data centers, server rooms, technical floors and the offices of technology companies. We design and build the physical environments that technical equipment and technical teams work in — spatial planning, construction, and coordination between the disciplines involved." data-tr="Data centerlar, server roomlar, teknik katlar ve teknoloji şirketlerinin ofisleri. Teknik ekipmanın ve teknik ekiplerin çalıştığı fiziksel ortamları tasarlıyor ve inşa ediyoruz — mekânsal planlama, yapım ve işin içindeki disiplinler arasında koordinasyon.">Data centerlar, server roomlar, teknik katlar ve teknoloji şirketlerinin ofisleri. Teknik ekipmanın ve teknik ekiplerin çalıştığı fiziksel ortamları tasarlıyor ve inşa ediyoruz — mekânsal planlama, yapım ve işin içindeki disiplinler arasında koordinasyon.</p>
       <div class="service-list dark-list"><span>DATA CENTERS</span><span>SERVER ROOMS</span><span>TECHNICAL FLOORS</span><span>TECHNOLOGY OFFICES</span><span>SMART BUILDINGS</span><span>PHYSICAL INFRASTRUCTURE</span></div>
     </div>
-    <div class="discipline-visual tech-visual reveal d1">
-      <div class="pattern-dots"></div>
-      <div class="pattern-mark"><img src="assets/logo/mon-in.png" alt=""></div>
+    <div class="discipline-visual reveal d1">
+      <img src="assets/projects/technical-space-reference.jpg" alt="Data centre aisle" loading="lazy">
+      <span class="image-caption" data-en="Reference image" data-tr="Referans görsel">Referans görsel</span>
     </div>
   </div>
 </section>
@@ -611,6 +627,7 @@
     navToggle.setAttribute('aria-expanded', String(open));
   });
   addEventListener('keydown', e=>{ if(e.key==='Escape' && navOpen()) closeNav(); });
+  document.getElementById('navScrim').addEventListener('click', closeNav);
 
   document.querySelectorAll('[data-goto]').forEach(el=>{
     el.addEventListener('click', e=>{ e.preventDefault(); closeNav(); goTo(parseInt(el.dataset.goto,10)); });
