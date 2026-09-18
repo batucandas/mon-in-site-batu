@@ -200,7 +200,7 @@
   .case-image img{ width:100%; height:100%; object-fit:cover; }
   /* a logo rather than a photograph: sit it whole on the black it was drawn on */
   .case-image.mark{ background:#000; }
-  .case-image.mark img{ object-fit:contain; padding:6px; }
+  .case-image.mark img{ object-fit:contain; padding:6px; filter:grayscale(1); }
   /* institutional marks: greyscaled so their reds do not compete with the MON-IN × */
   .case-partners{ display:flex; align-items:center; gap:9px 18px; flex-wrap:wrap; margin-top:14px; }
   .case-partners .lbl{ font-size:.58rem; letter-spacing:.17em; text-transform:uppercase; color:var(--gray); }
@@ -215,7 +215,7 @@
   .car-title h2{ font-weight:700; font-size:clamp(1.7rem,3.8vw,2.5rem); letter-spacing:-.03em; }
   .work-note{ margin-top:16px; color:var(--ink-soft); font-size:.92rem; line-height:1.6; max-width:34ch; font-weight:300; }
   .car-arrows{ display:flex; gap:10px; margin-top:26px; }
-  .car-arrows button{ width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--bg); font-size:1rem; cursor:pointer; transition:background .2s ease; }
+  .car-arrows button{ width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--bg); color:var(--red); font-size:1.05rem; cursor:pointer; transition:background .2s ease; }
   .car-arrows button:hover{ background:var(--bg-2); }
   /* the page counter tracks slides, not projects — the carousel needs its own */
   .car-count{ align-self:center; margin-left:8px; font-size:.78rem; letter-spacing:.08em;
@@ -263,10 +263,15 @@
 
   /* ---------- Utility bar (page counter) ---------- */
   /* the page counter is fixed in the bottom right, so content has to stop short of it */
-  .discipline, .exhibition, .case, .carousel-sec, .people, .why, .contact, .intersection{ padding-bottom:70px; }
+  /* the header and the page counter are both fixed, so centred content has to stop
+     short of each or it slides underneath them */
+  .discipline, .exhibition, .case, .carousel-sec, .people, .why, .contact, .intersection{ padding-top:88px; padding-bottom:70px; }
 
-  .pagectl{ position:fixed; right:26px; bottom:22px; z-index:400; display:flex; align-items:center; gap:10px; font-size:.7rem; letter-spacing:.08em; color:var(--gray); mix-blend-mode:difference; }
-  .pagectl b{ color:var(--ink); font-family:'Archivo',sans-serif; }
+  .pagectl{ position:fixed; right:26px; bottom:22px; z-index:400; display:flex; align-items:center; gap:10px; font-size:.75rem; letter-spacing:.08em; color:var(--ink-soft); }
+  .pagectl b{ color:var(--ink); font-family:'Archivo',sans-serif; font-weight:700; }
+  /* difference blending left the counter a muddy mid-grey on both grounds */
+  header.on-dark ~ .pagectl{ color:#A9A9A1; }
+  header.on-dark ~ .pagectl b{ color:#EDEDE8; }
   .pagectl button{ border:0; background:none; cursor:pointer; color:inherit; font-size:.85rem; padding:5px 7px; min-width:24px; min-height:24px; }
 
   /* ================= MOBILE ================= */
@@ -508,7 +513,7 @@
       <img src="assets/partners/anadolu-ajansi.jpg" alt="Anadolu Ajansı" loading="lazy">
     </div>
     <div class="case-image mark reveal d2"><img alt="INSECSPACE 2026 — Innovations &amp; Security in Space" loading="lazy" src="assets/projects/insecspace-logo.jpg"></div>
-    <div class="case-bottom reveal d3"><strong>Concept · Digital Platform · Event Production · Industry Coordination</strong><a href="https://www.insecspace.org.tr" rel="noopener" target="_blank">insecspace.org.tr ↗</a></div>
+    <div class="case-bottom reveal d3"><strong>Concept · Digital Platform · Event Production · Industry Coordination</strong><a href="https://www.insecspace.org.tr" rel="noopener" target="_blank">insecspace.org.tr</a></div>
   </div>
 </section>
 
@@ -559,7 +564,7 @@
   <div class="contact-grid">
     <div class="contact-left reveal">
       <h2 data-en="Tell us about the project." data-tr="Projenizi anlatın.">Projenizi anlatın.</h2>
-      <a class="contact-cta" href="mailto:info@mon-in.com">info@mon-in.com ↗</a>
+      <a class="contact-cta" href="mailto:info@mon-in.com">info@mon-in.com</a>
     </div>
     <div class="contact-right reveal d1">
       <div><span data-en="Phone" data-tr="Telefon">Telefon</span><strong>+90 312 911 08 18</strong></div>
