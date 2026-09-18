@@ -60,6 +60,7 @@
   header.on-dark nav a.x{ color:var(--red-dk); }
   nav a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:currentColor; transition:width .3s ease; }
   nav a:hover::after{ width:100%; }
+  nav a.here::after{ width:100%; background:var(--red); }
   .lang-btn{ border:0; background:none; color:var(--ink); font:600 .78rem 'Inter',sans-serif; letter-spacing:.12em; cursor:pointer; margin-left:28px; transition:color .3s ease; }
   header.on-dark .lang-btn{ color:#fff; }
   .nav-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px;
@@ -366,7 +367,7 @@
 <div id="slides">
 
 <!-- 0 HERO -->
-<section class="slide hero dark">
+<section class="slide hero dark" id="hero">
   <div class="hero-frames" id="heroFrames"></div>
   <div class="hero-scrim"></div>
   <div class="hero-headline reveal in">
@@ -387,7 +388,7 @@
 </section>
 
 <!-- 1 STATEMENT -->
-<section class="slide statement tint">
+<section class="slide statement tint" id="statement">
   <span class="yr left">2015</span><span class="yr right">2026</span>
   <div class="center-copy reveal">
     <h2><span data-en="Design Space " data-tr="Design Space ">Design Space </span><span class="red-x">×</span><span data-en=" Technical Space" data-tr=" Technical Space"> Technical Space</span></h2>
@@ -396,7 +397,7 @@
 </section>
 
 <!-- 2 PEOPLE — ÇAĞKAN -->
-<section class="slide people">
+<section class="slide people" id="cagkan">
   <div class="people-wrap">
     <div class="people-head reveal">
       <div class="kicker">PEOPLE BEHIND MON-IN</div>
@@ -415,7 +416,7 @@
 </section>
 
 <!-- 3 PEOPLE — ALİ -->
-<section class="slide people">
+<section class="slide people" id="ali">
   <div class="people-wrap">
     <div class="people-head reveal">
       <div class="kicker">PEOPLE BEHIND MON-IN</div>
@@ -451,7 +452,7 @@
 </section>
 
 <!-- 4 INTERSECTION -->
-<section class="slide intersection dark">
+<section class="slide intersection dark" id="intersection">
   <div class="intersection-inner">
     <div class="intersection-x reveal">×</div>
     <div class="intersection-copy reveal d1">
@@ -464,7 +465,7 @@
 </section>
 
 <!-- 5 CONNECT / EXHIBITION -->
-<section class="slide exhibition tint">
+<section class="slide exhibition tint" id="connect">
   <div class="exhibition-grid">
     <div class="exhibition-image reveal"><img alt="Exhibition stand reference visual" loading="lazy" src="assets/projects/exhibition-stand.jpg"></div>
     <div class="exhibition-copy reveal d1">
@@ -493,7 +494,7 @@
 </section>
 
 <!-- 7 TUNCELİ MUSEUM CASE -->
-<section class="slide case tint">
+<section class="slide case tint" id="tunceli">
   <div class="case-inner">
     <div class="case-head reveal">
       <div><div class="kicker">SELECTED CASE — DESIGN SPACE</div><h2>TUNCELİ<br>MUSEUM</h2></div>
@@ -505,7 +506,7 @@
 </section>
 
 <!-- 8 INSECSPACE CASE -->
-<section class="slide case" id="work">
+<section class="slide case" id="insecspace">
   <div class="case-inner">
     <div class="case-head reveal">
       <div class="kicker">SELECTED CASE — 2026</div>
@@ -530,7 +531,7 @@
 </section>
 
 <!-- 9 SELECTED WORK -->
-<section class="slide carousel-sec tint">
+<section class="slide carousel-sec tint" id="work">
   <div class="car-grid">
     <div class="car-title reveal">
       <div class="kicker">SELECTED WORK</div>
@@ -543,7 +544,7 @@
 </section>
 
 <!-- 10 WHY MON-IN -->
-<section class="slide why">
+<section class="slide why" id="why">
   <div class="why-inner">
     <div class="kicker">WHY MON-IN</div><h2>ONE SPACE.<br>MULTIPLE DISCIPLINES.</h2>
     <div class="why-grid">
@@ -556,7 +557,7 @@
 </section>
 
 <!-- 11 ABOUT -->
-<section class="slide philosophy tint" id="hakkinda">
+<section class="slide philosophy tint" id="about">
   <div class="phil-grid">
     <div class="phil-text reveal">
       <h2 class="about-title" data-en="An architecture studio that speaks engineering." data-tr="Mühendislik konuşan bir mimarlık stüdyosu.">Mühendislik konuşan bir mimarlık stüdyosu.</h2>
@@ -572,7 +573,7 @@
 </section>
 
 <!-- 12 CONTACT -->
-<section class="slide contact" id="iletisim">
+<section class="slide contact" id="contact">
   <div class="contact-grid">
     <div class="contact-left reveal">
       <h2 data-en="Tell us about the project." data-tr="Projenizi anlatın.">Projenizi anlatın.</h2>
@@ -603,6 +604,7 @@
   let current=0, animating=false;
   const ANIM_MS=780;
   const header=document.getElementById('siteHeader');
+  const navLinks=[...document.querySelectorAll('nav [data-goto]')];
   const darkIdx=new Set(slides.map((s,i)=>s.classList.contains('dark')?i:null).filter(v=>v!==null));
 
   function setVh(){ document.documentElement.style.setProperty('--vh', window.innerHeight+'px'); }
@@ -617,6 +619,14 @@
     // off-screen slides stay in the DOM, so without this a keyboard user tabs
     // into links on sections they cannot see
     slides.forEach((s,i)=>{ s.inert = (i!==current); });
+    // a deck with no scrollbar gives no sense of place, so the address and the nav carry it
+    const id=slides[current].id;
+    if(id){ try{ history.replaceState(null,'','#'+id); }catch(e){} }
+    navLinks.forEach(a=>{
+      const on = Number(a.dataset.goto)===current;
+      a.classList.toggle('here', on);
+      if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
   }
 
   function goForward(){
@@ -793,6 +803,8 @@
   paintHero(0);
 
   slides[0].classList.add('shown');
+  const fromHash=slides.findIndex(sl=>sl.id && '#'+sl.id===decodeURIComponent(location.hash));
+  if(fromHash>0){ for(let i=1;i<=fromHash;i++) slides[i].classList.add('shown'); current=fromHash; }
   updateChrome();
 })();
 </script>
