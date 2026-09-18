@@ -77,9 +77,10 @@
   .slide.tint{ background:var(--bg-2); }
   .slide.shown{ transform:translateY(0); }
 
-  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-  .slide.shown .reveal{ opacity:1; transform:translateY(0); }
-  .reveal.d1{ transition-delay:.12s; } .reveal.d2{ transition-delay:.22s; } .reveal.d3{ transition-delay:.32s; }
+  /* Elements used to fade and slide up inside every slide, but the slide is already
+     sliding up — motion on top of motion, and a 120–320ms wait before the content
+     could be read, fourteen times over. Content now arrives composed with its slide.
+     The .reveal classes are left in the markup so this is one block to restore. */
 
   .kicker{ font-size:0.8rem; color:var(--gray); text-transform:uppercase; letter-spacing:0.15em; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
   .dark .kicker{ color:#9C9C94; }
@@ -99,6 +100,11 @@
   .hero-motto .scroll-note{ color:var(--gray); letter-spacing:.08em; }
   /* ---------- Hero full-bleed frames ---------- */
   .hero-headline, .hero-sub, .hero-motto{ position:relative; z-index:2; }
+  /* the single orchestrated entrance: the opening lockup, once, on first load */
+  .hero-headline{ animation:heroIn .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-sub{ animation:heroIn .9s cubic-bezier(.2,.7,.2,1) .09s both; }
+  .hero-motto{ animation:heroIn .9s cubic-bezier(.2,.7,.2,1) .18s both; }
+  @keyframes heroIn{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:none; } }
   .hero-frames{ position:absolute; inset:0; z-index:0; background:#0E0E0C; }
   .hero-frame{ position:absolute; inset:0; opacity:0; transition:opacity 1.5s ease; }
   .hero-frame.on{ opacity:1; }
@@ -309,7 +315,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .slide{ transition:none; }
-    .reveal{ transition:none; opacity:1; transform:none; }
+    .hero-headline, .hero-sub, .hero-motto{ animation:none; }
     .hero-frame{ transition:none; }
     .hero.live .hero-frame.on i, .hero.live .hero-frame.on.rev i{ animation:none; }
   }
