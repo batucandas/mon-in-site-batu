@@ -121,8 +121,10 @@
   .people-head{ margin-bottom:44px; }
   .people-head h2{ font-size:clamp(2rem,4.4vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin-top:8px; }
   .people-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6vw; }
+  /* one founder to a slide, so the card gets room and the portrait can be larger */
+  .people-grid.single{ grid-template-columns:minmax(0,620px); }
   .person-card{ border-top:1px solid var(--line); padding-top:20px; }
-  .person-photo{ width:clamp(112px,13vh,158px); aspect-ratio:1; margin-bottom:22px; overflow:hidden; }
+  .person-photo{ width:clamp(128px,19vh,210px); aspect-ratio:1; margin-bottom:24px; overflow:hidden; }
   .person-photo img{ width:100%; height:100%; object-fit:cover; }
   .founder-index{ font-size:0.8rem; color:var(--gray); margin-bottom:8px; }
   .founder-name{ font-weight:800; font-size:clamp(1.8rem, 3.6vw, 2.6rem); line-height:1.05; }
@@ -176,7 +178,7 @@
   .case-image img{ width:100%; height:100%; object-fit:cover; }
   /* a logo rather than a photograph: sit it whole on the black it was drawn on */
   .case-image.mark{ background:#000; }
-  .case-image.mark img{ object-fit:contain; padding:16px; }
+  .case-image.mark img{ object-fit:contain; padding:6px; }
   /* institutional marks: greyscaled so their reds do not compete with the MON-IN × */
   .case-partners{ display:flex; align-items:center; gap:9px 18px; flex-wrap:wrap; margin-top:14px; }
   .case-partners .lbl{ font-size:.58rem; letter-spacing:.17em; text-transform:uppercase; color:var(--gray); }
@@ -229,14 +231,18 @@
   .contact{ justify-content:center; padding:0 48px; }
   .contact-grid{ max-width:1200px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:6vw; }
   .contact-left h2{ font-weight:700; font-size:clamp(1.8rem,3.8vw,2.8rem); margin:14px 0 24px; letter-spacing:-.03em; }
-  .contact-cta{ font-family:'Archivo',sans-serif; font-size:1.05rem; font-weight:600; border-bottom:1px solid var(--ink); padding-bottom:4px; }
+  .contact-cta{ font-family:'Archivo',sans-serif; font-size:1.35rem; font-weight:700; letter-spacing:-.02em; border-bottom:1px solid var(--ink); padding-bottom:4px; }
   .contact-right div{ margin-bottom:18px; }
   .contact-right span{ font-size:.7rem; color:var(--gray); text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom:5px; }
-  .contact-right strong{ font-family:'Archivo',sans-serif; font-size:1rem; font-weight:600; }
+  /* Archivo is display only — the address and phone are body text */
+  .contact-right strong{ font-size:.98rem; font-weight:500; line-height:1.5; }
   .contact-links{ display:flex; gap:18px; margin-top:8px; }
   .contact-links a{ font-size:.82rem; border-bottom:1px solid var(--line); padding-bottom:3px; }
 
   /* ---------- Utility bar (page counter) ---------- */
+  /* the page counter is fixed in the bottom right, so content has to stop short of it */
+  .discipline, .exhibition, .case, .carousel-sec, .people, .why, .contact, .intersection{ padding-bottom:70px; }
+
   .pagectl{ position:fixed; right:26px; bottom:22px; z-index:400; display:flex; align-items:center; gap:10px; font-size:.7rem; letter-spacing:.08em; color:var(--gray); mix-blend-mode:difference; }
   .pagectl b{ color:var(--ink); font-family:'Archivo',sans-serif; }
   .pagectl button{ border:0; background:none; cursor:pointer; color:inherit; font-size:.85rem; padding:5px 7px; min-width:24px; min-height:24px; }
@@ -301,12 +307,12 @@
     <span class="brand-name">MON-IN</span>
   </a>
   <nav id="mainNav">
-    <a data-goto="3" data-en="Design Space" data-tr="Design Space">Design Space</a>
-    <a data-goto="4" data-en="×" data-tr="×">×</a>
-    <a data-goto="6" data-en="Technical Space" data-tr="Technical Space">Technical Space</a>
-    <a data-goto="9" data-en="Selected Work" data-tr="Projeler">Projeler</a>
-    <a data-goto="11" data-en="About" data-tr="Hakkımızda">Hakkımızda</a>
-    <a data-goto="12" data-en="Contact" data-tr="İletişim">İletişim</a>
+    <a data-goto="4" data-en="Design Space" data-tr="Design Space">Design Space</a>
+    <a data-goto="5" data-en="×" data-tr="×">×</a>
+    <a data-goto="7" data-en="Technical Space" data-tr="Technical Space">Technical Space</a>
+    <a data-goto="10" data-en="Selected Work" data-tr="Projeler">Projeler</a>
+    <a data-goto="12" data-en="About" data-tr="Hakkımızda">Hakkımızda</a>
+    <a data-goto="13" data-en="Contact" data-tr="İletişim">İletişim</a>
   </nav>
   <button class="lang-btn" id="langBtn">EN</button>
   <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
@@ -339,30 +345,37 @@
 <section class="slide statement tint">
   <span class="yr left">2015</span><span class="yr right">2026</span>
   <div class="center-copy reveal">
-    <div class="kicker center" data-en="DESIGN · TECHNOLOGY · SPACE" data-tr="TASARIM · TEKNOLOJİ · SPACE">TASARIM · TEKNOLOJİ · SPACE</div>
     <h2><span data-en="Design Space " data-tr="Design Space ">Design Space </span><span class="red-x">×</span><span data-en=" Technical Space" data-tr=" Technical Space"> Technical Space</span></h2>
     <p class="statement-note" data-en="Two sides of one idea: the spaces people live and work in, and the spaces technology needs — from homes and museums to data centers and server rooms." data-tr="Tek bir fikrin iki yüzü: insanların yaşadığı ve çalıştığı mekânlar ile teknolojinin ihtiyaç duyduğu mekânlar — konuttan müzeye, data centerdan server rooma.">Tek bir fikrin iki yüzü: insanların yaşadığı ve çalıştığı mekânlar ile teknolojinin ihtiyaç duyduğu mekânlar — konuttan müzeye, data centerdan server rooma.</p>
   </div>
 </section>
 
-<!-- 2 PEOPLE -->
+<!-- 2 PEOPLE — ÇAĞKAN -->
 <section class="slide people tint">
   <div class="people-wrap">
     <div class="people-head reveal">
       <div class="kicker">PEOPLE BEHIND MON-IN</div>
       <h2 data-en="An architect and an engineer. One studio." data-tr="Bir mimar, bir mühendis. Tek stüdyo.">Bir mimar, bir mühendis. Tek stüdyo.</h2>
     </div>
-    <div class="people-grid">
+    <div class="people-grid single">
       <div class="person-card reveal">
         <div class="person-photo"><img src="assets/people/cagkan-yazici.jpg" alt="Çağkan Yazıcı" loading="lazy"></div>
-        <div class="founder-index">01 — FOUNDER</div>
+        <div class="founder-index">FOUNDER</div>
         <h3 class="founder-name">ÇAĞKAN YAZICI</h3>
         <div class="founder-role">FOUNDER &amp; CREATIVE DIRECTOR · INTERIOR ARCHITECT / DIGITAL ARTIST · BILKENT UNIVERSITY</div>
         <p class="founder-desc" data-en="Founder and creative lead of MON-IN. Leads the studio's design language, visualization and spatial experience across architecture and interior architecture projects." data-tr="MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.">MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.</p>
       </div>
-      <div class="person-card reveal d1">
+    </div>
+  </div>
+</section>
+
+<!-- 3 PEOPLE — ALİ -->
+<section class="slide people tint">
+  <div class="people-wrap">
+    <div class="people-grid single">
+      <div class="person-card reveal">
         <div class="person-photo"><img src="assets/people/ali-yazici.jpg" alt="M. Ali Yazıcı" loading="lazy"></div>
-        <div class="founder-index">02 — CO-FOUNDER</div>
+        <div class="founder-index">CO-FOUNDER</div>
         <h3 class="founder-name">M. ALI YAZICI</h3>
         <div class="founder-role">CO-FOUNDER · ELECTRICAL &amp; ELECTRONICS ENGINEER · MIDDLE EAST TECHNICAL UNIVERSITY</div>
         <p class="founder-desc" data-en="Strengthens MON-IN's technology layer through expertise in technology, defence-industry cybersecurity and industry gatherings; actively involved in technology-focused initiatives such as INSECSPACE." data-tr="Teknoloji, savunma sanayii siber güvenliği ve sektör buluşmaları tarafındaki uzmanlıkla MON-IN'in teknoloji katmanını güçlendirir; INSECSPACE gibi teknoloji odaklı organizasyonlarda aktif rol üstlenir.">Teknoloji, savunma sanayii siber güvenliği ve sektör buluşmaları tarafındaki uzmanlıkla MON-IN'in teknoloji katmanını güçlendirir; INSECSPACE gibi teknoloji odaklı organizasyonlarda aktif rol üstlenir.</p>
@@ -375,7 +388,7 @@
 <section class="slide discipline" id="design-space">
   <div class="discipline-grid">
     <div class="discipline-copy reveal">
-      <div class="kicker">01 — DESIGN SPACE</div>
+      <div class="kicker">DESIGN SPACE</div>
       <h2 data-en="We design space." data-tr="Mekânı tasarlıyoruz.">Mekânı tasarlıyoruz.</h2>
       <p data-en="Architecture &amp; Interior Architecture across residential, workplace, commercial, public and cultural environments. AI-assisted design, BIM, visualization, smart systems and project delivery connect design with performance." data-tr="Mimarlık ve iç mimarlık; konut, ofis, ticari, kamu ve kültürel projeler. AI destekli tasarım, BIM, görselleştirme, akıllı sistemler ve proje teslimi tasarımı performansla buluşturur.">Mimarlık ve iç mimarlık; konut, ofis, ticari, kamu ve kültürel projeler. AI destekli tasarım, BIM, görselleştirme, akıllı sistemler ve proje teslimi tasarımı performansla buluşturur.</p>
       <div class="service-list"><span>DESIGN</span><span>CONSTRUCTION</span><span>BIM</span><span>AI</span><span>AUTOMATION</span><span>VISUALIZATION</span><span>SMART SYSTEMS</span></div>
@@ -418,7 +431,7 @@
 <section class="slide discipline dark" id="technical-space">
   <div class="discipline-grid">
     <div class="discipline-copy reveal">
-      <div class="kicker">03 — TECHNICAL SPACE</div>
+      <div class="kicker">TECHNICAL SPACE</div>
       <h2 data-en="The buildings technology needs." data-tr="Teknolojinin ihtiyaç duyduğu yapılar.">Teknolojinin ihtiyaç duyduğu yapılar.</h2>
       <p data-en="Data centers, server rooms, technical floors and the offices of technology companies. We design and build the physical environments that technical equipment and technical teams work in — spatial planning, construction, and coordination between the disciplines involved." data-tr="Data centerlar, server roomlar, teknik katlar ve teknoloji şirketlerinin ofisleri. Teknik ekipmanın ve teknik ekiplerin çalıştığı fiziksel ortamları tasarlıyor ve inşa ediyoruz — mekânsal planlama, yapım ve işin içindeki disiplinler arasında koordinasyon.">Data centerlar, server roomlar, teknik katlar ve teknoloji şirketlerinin ofisleri. Teknik ekipmanın ve teknik ekiplerin çalıştığı fiziksel ortamları tasarlıyor ve inşa ediyoruz — mekânsal planlama, yapım ve işin içindeki disiplinler arasında koordinasyon.</p>
       <div class="service-list dark-list"><span>DATA CENTERS</span><span>SERVER ROOMS</span><span>TECHNICAL FLOORS</span><span>TECHNOLOGY OFFICES</span><span>SMART BUILDINGS</span><span>PHYSICAL INFRASTRUCTURE</span></div>
@@ -497,7 +510,6 @@
 <section class="slide philosophy tint" id="hakkinda">
   <div class="phil-grid">
     <div class="phil-text reveal">
-      <div class="kicker">ABOUT MON-IN</div>
       <h2 class="about-title" data-en="An architecture studio that speaks engineering." data-tr="Mühendislik konuşan bir mimarlık stüdyosu.">Mühendislik konuşan bir mimarlık stüdyosu.</h2>
       <p data-en="MON-IN is a Design &amp; Technology Studio rooted in architecture and interior architecture. Design Space and Technical Space are two sides of the same idea: the spaces people live and work in, and the spaces technology needs — from homes and museums to data centers and server rooms." data-tr="MON-IN, mimarlık ve iç mimarlık köklerinden gelen bir Design &amp; Technology Studio. Design Space ve Technical Space aynı fikrin iki yüzü: insanların yaşadığı ve çalıştığı mekânlar ile teknolojinin ihtiyaç duyduğu mekânlar — konuttan müzeye, data centerdan server rooma.">MON-IN, mimarlık ve iç mimarlık köklerinden gelen bir Design &amp; Technology Studio. Design Space ve Technical Space aynı fikrin iki yüzü: insanların yaşadığı ve çalıştığı mekânlar ile teknolojinin ihtiyaç duyduğu mekânlar — konuttan müzeye, data centerdan server rooma.</p>
       <p class="about-small" data-en="Design with intelligence." data-tr="Design with intelligence.">Design with intelligence.</p>
@@ -514,7 +526,6 @@
 <section class="slide contact" id="iletisim">
   <div class="contact-grid">
     <div class="contact-left reveal">
-      <div class="kicker">CONTACT</div>
       <h2 data-en="Tell us about the project." data-tr="Projenizi anlatın.">Projenizi anlatın.</h2>
       <a class="contact-cta" href="mailto:info@mon-in.com">info@mon-in.com ↗</a>
     </div>
@@ -522,7 +533,7 @@
       <div><span data-en="Phone" data-tr="Telefon">Telefon</span><strong>+90 312 911 08 18</strong></div>
       <div><span>ANKARA</span><strong data-en="Kızılırmak Mah. 1443 Cad. No: 25B<br>Suite 8, Çankaya" data-tr="Kızılırmak Mah. 1443 Cad. No: 25B<br>İç Kapı No: 8, Çankaya">Kızılırmak Mah. 1443 Cad. No: 25B<br>İç Kapı No: 8, Çankaya</strong></div>
       <div><span>BODRUM</span><strong>Bodrum, Muğla</strong></div>
-      <div class="contact-links"><a href="https://www.instagram.com/" rel="noopener" target="_blank">Instagram ↗</a><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn ↗</a></div>
+      <div class="contact-links"><a href="https://www.instagram.com/" rel="noopener" target="_blank">Instagram</a><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn</a></div>
     </div>
   </div>
 </section>
@@ -617,7 +628,8 @@
 
   let touchStartY=0, touchLock=false;
   window.addEventListener('touchstart', e=>{ touchStartY=e.touches[0].clientY; }, {passive:true});
-  window.addEventListener('touchmove', e=>{ if(!navOpen()) e.preventDefault(); }, {passive:false});
+  // one finger pages the deck; two fingers must reach the browser or pinch-zoom cannot be undone
+  window.addEventListener('touchmove', e=>{ if(!navOpen() && e.touches.length===1) e.preventDefault(); }, {passive:false});
   window.addEventListener('touchend', function(e){
     if(navOpen()) return;
     const dy=touchStartY-e.changedTouches[0].clientY;
@@ -653,7 +665,7 @@
   // photograph in assets/projects/. Set hero:true to also show it in the opening rotation.
   const projects=[
     { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Gümüşlük, Bodrum', desc:'Interior design project with follow-up services. 2020.', img:'assets/projects/private-villa-gumusluk.jpg' },
-    { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Spain', desc:'Interior design project. 2019.', img:'assets/projects/private-villa-spain.jpg' },
+    
     { tag:'SPACE / WORKPLACE', name:'Office — Ankara', desc:'Interior design project. 1,000 m². 2019.', img:'assets/projects/office-ankara-1000.jpg' },
     { tag:'SPACE / RESIDENTIAL', name:'Residence — Angora, Ankara', desc:'Interior design project. 200 m². 2019. Visualization.', img:'assets/projects/residence-angora.jpg' },
     { tag:'SPACE / WORKPLACE', name:'Office — Ankara', desc:'Interior design project with follow-up services. 500 m². 2019.', img:'assets/projects/office-ankara-500.jpg' },
@@ -664,7 +676,7 @@
     { tag:'SPACE / PUBLIC', name:'İzmir Selçuk Bus Station', desc:'Architectural project. İzmir Metropolitan Municipality. 20,000 m². 2015.', img:'assets/projects/izmir-selcuk-bus-station.jpg', hero:true },
     { tag:'SPACE / CULTURAL', name:'Milas Museum', desc:'Interior design project. Ministry of Culture and Tourism. 500 m². 2016. Visualization.', img:'assets/projects/milas-museum.jpg' },
     { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Ankara', desc:'Interior design project with follow-up services. 600 m². 2015.', img:'assets/projects/private-villa-ankara.jpg' },
-    { tag:'SPACE / INTERIOR DESIGN', name:'Decoration', desc:'Interior design project. 2017.', img:'assets/projects/decoration.jpg', hero:true }
+    
   ];
   let pi=0;
   const carImg=document.getElementById('carImg'), carTag=document.getElementById('carTag'), carName=document.getElementById('carName'), carDesc=document.getElementById('carDesc');
