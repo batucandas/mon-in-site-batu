@@ -212,6 +212,23 @@ Bu kilit bu aileye ait her araçta aynı kalır.
 | İki terimin arasında durur | Bağlam çarpma/kesişim okumasını anında verir |
 | Tek başına dev boyutta kullanılmaz | Bağlamsız kırmızı × "yanlış" demektir |
 
+### Ana kilit
+
+```
+DESIGN      SPACE
+            ×
+TECHNICAL   SPACE
+```
+
+Sol kolon açık ağırlıkta niteleyici (DESIGN / TECHNICAL), sağ kolon kalın
+ağırlıkta ortak kelime (SPACE / SPACE). Kırmızı × ikisinin arasında, sağ
+kolonda durur — böylece iki SPACE kelimesi üst üste hizalanır ve × tam
+ortalarına gelir.
+
+İki tarafın da SPACE ile bitmesi tesadüf değil: simetri, iki alanın aynı işin
+iki yüzü olduğunu kelime düzeyinde gösterir. Ayrıca Türkçeye çevrilebilir —
+**tasarım mekânı** ve **teknik mekân** ikisi de yerleşik terimlerdir.
+
 **Bilinen risk:** Türkiye'de çarpı, okul çağından gelen kodlamayla "yanlış"
 anlamı taşır; arayüzlerde de kapatma düğmesidir. Yukarıdaki kurallar bu riski
 yönetmek içindir, süs değildir. Navigasyon menüsünde bağlantı etiketi olarak
