@@ -21,6 +21,8 @@
   ::selection{ background:var(--ink); color:var(--bg); }
   h1,h2,h3,.disp{ font-family:'Archivo',sans-serif; letter-spacing:-0.02em; }
   button{ font-family:inherit; }
+  :focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
+  header.on-dark :focus-visible, .slide.dark :focus-visible{ outline-color:#fff; }
 
   /* ---------- Header ---------- */
   header{
@@ -222,7 +224,7 @@
   /* ---------- Utility bar (page counter) ---------- */
   .pagectl{ position:fixed; right:26px; bottom:22px; z-index:400; display:flex; align-items:center; gap:10px; font-size:.7rem; letter-spacing:.08em; color:var(--gray); mix-blend-mode:difference; }
   .pagectl b{ color:var(--ink); font-family:'Archivo',sans-serif; }
-  .pagectl button{ border:0; background:none; cursor:pointer; color:inherit; font-size:.85rem; }
+  .pagectl button{ border:0; background:none; cursor:pointer; color:inherit; font-size:.85rem; padding:5px 7px; min-width:24px; min-height:24px; }
 
   /* ================= MOBILE ================= */
   @media (max-width:900px){
@@ -251,6 +253,8 @@
   }
 
   @media (prefers-reduced-motion: reduce){
+    .slide{ transition:none; }
+    .reveal{ transition:none; opacity:1; transform:none; }
     .hero-frame{ transition:none; }
     .hero.live .hero-frame.on i, .hero.live .hero-frame.on.rev i{ animation:none; }
   }
@@ -397,7 +401,7 @@
   <div class="case-inner">
     <div class="case-head reveal">
       <div><div class="kicker">SELECTED CASE — DESIGN SPACE</div><h2>TUNCELİ<br>MUSEUM</h2></div>
-      <p data-en="MON-IN-designed Tunceli Museum was a finalist for the European Museum of the Year Award and the Luigi Micheletti Award, and was nominated for the 2026 DASA Award." data-tr="MON-IN tarafından tasarlanan Tunceli Müzesi; European Museum of the Year Award ve Luigi Micheletti Award finallerinde yer aldı ve 2026 DASA Award için aday gösterildi.">MON-IN tarafından tasarlanan Tunceli Müzesi; European Museum of the Year Award ve Luigi Micheletti Award finallerinde yer aldı ve 2026 DASA Award için aday gösterildi.</p>
+      <p data-en="MON-IN-designed Tunceli Museum was a finalist for the European Museum of the Year Award, the Luigi Micheletti Award and the 2026 DASA Award." data-tr="MON-IN tarafından tasarlanan Tunceli Müzesi; European Museum of the Year Award, Luigi Micheletti Award ve 2026 DASA Award finallerinde yer aldı.">MON-IN tarafından tasarlanan Tunceli Müzesi; European Museum of the Year Award, Luigi Micheletti Award ve 2026 DASA Award finallerinde yer aldı.</p>
     </div>
     <div class="case-image reveal d1"><img alt="Tunceli Museum — MON-IN selected case" loading="lazy" src="assets/projects/tunceli-city-museum.jpg"></div>
     <div class="case-bottom reveal d2"><strong>DESIGN SPACE · CULTURAL · 2,000 M² · 2016</strong><span>EUROPEAN MUSEUM OF THE YEAR — FINALIST</span></div>
@@ -505,6 +509,9 @@
     const heroLive = current===0;
     slides[0].classList.toggle('live', heroLive);
     if(heroLive) startHero(); else stopHero();
+    // off-screen slides stay in the DOM, so without this a keyboard user tabs
+    // into links on sections they cannot see
+    slides.forEach((s,i)=>{ s.inert = (i!==current); });
   }
 
   function goForward(){
