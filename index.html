@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MON-IN — Design Space × Technical Space</title>
+<meta name="description" id="metaDesc" content="MON-IN, Ankara merkezli bir tasarım ve teknoloji stüdyosu. Mimarlık, iç mimarlık ve teknolojinin ihtiyaç duyduğu teknik mekânlar — müzeden havalimanına, data centerdan teknoloji ofisine.">
+<link rel="canonical" href="https://mon-in.candas-batughan.workers.dev/">
+<link rel="icon" href="assets/logo/mon-in.png">
+<!-- Absolute URLs: crawlers do not resolve relative paths. Update all three if the domain changes. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MON-IN">
+<meta property="og:url" content="https://mon-in.candas-batughan.workers.dev/">
+<meta property="og:title" content="MON-IN — Design Space × Technical Space">
+<meta property="og:description" content="Architecture, interior architecture, and the technical environments technology needs — from museums and airports to data centres and technology workplaces.">
+<meta property="og:image" content="https://mon-in.candas-batughan.workers.dev/assets/hero/02-airport-departures.jpg">
+<meta property="og:image:width" content="1800">
+<meta property="og:image:height" content="1009">
+<meta property="og:image:alt" content="Amasya Merzifon Airport departures hall, designed by MON-IN">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -381,15 +395,6 @@
     </div>
     <div class="people-grid single">
       <div class="person-card reveal">
-        <div class="person-photo"><img src="assets/people/cagkan-yazici.jpg" alt="Çağkan Yazıcı" loading="lazy"></div>
-        <div class="founder-index">FOUNDER</div>
-        <h3 class="founder-name">ÇAĞKAN YAZICI</h3>
-        <div class="founder-role">FOUNDER &amp; CREATIVE DIRECTOR · INTERIOR ARCHITECT / DIGITAL ARTIST · BILKENT UNIVERSITY</div>
-        <p class="founder-desc" data-en="Founder and creative lead of MON-IN. Leads the studio's design language, visualization and spatial experience across architecture and interior architecture projects." data-tr="MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.">MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.</p>
-      </div>
-    </div>
-    <div class="people-grid single">
-      <div class="person-card reveal">
         <div class="person-photo"><img src="assets/people/ali-yazici.jpg" alt="M. Ali Yazıcı" loading="lazy"></div>
         <div class="founder-index">CO-FOUNDER</div>
         <h3 class="founder-name">M. ALI YAZICI</h3>
@@ -670,6 +675,11 @@
     nodes.forEach(el=>{ if(el.getAttribute('data-'+lang)!==null) el.innerHTML=el.getAttribute('data-'+lang); });
     langBtn.textContent=lang==='tr'?'EN':'TR';
     document.documentElement.lang=lang;
+    // crawlers read the served markup, but a reader who switches language should
+    // not hand someone a Turkish description for an English page
+    document.getElementById('metaDesc').setAttribute('content', lang==='tr'
+      ? 'MON-IN, Ankara merkezli bir tasarım ve teknoloji stüdyosu. Mimarlık, iç mimarlık ve teknolojinin ihtiyaç duyduğu teknik mekânlar — müzeden havalimanına, data centerdan teknoloji ofisine.'
+      : 'MON-IN is a design and technology studio in Ankara. Architecture, interior architecture, and the technical environments technology needs — from museums and airports to data centres and technology workplaces.');
   }
   langBtn.addEventListener('click', ()=>{ lang=lang==='tr'?'en':'tr'; applyLang(); });
   applyLang();
