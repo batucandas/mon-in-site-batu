@@ -674,23 +674,20 @@
   langBtn.addEventListener('click', ()=>{ lang=lang==='tr'?'en':'tr'; applyLang(); });
   applyLang();
 
-  // Photography shown in the opening rotation that is not a catalogued project.
-  const archive=[
-    { img:'assets/projects/exhibition-stand.jpg', tag:'CONNECT / EXHIBITION', name:'Exhibition & stand design' }
-  ];
+
   // Every project lives here once. To add one, append an entry below and drop its
-  // photograph in assets/projects/. Set hero:true to also show it in the opening rotation.
+  // photograph in assets/projects/. The opening rotation is chosen separately, above.
   const projects=[
     { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Gümüşlük, Bodrum', desc:'Interior design project with follow-up services. 2020.', img:'assets/projects/private-villa-gumusluk.jpg' },
     
     { tag:'SPACE / WORKPLACE', name:'Office — Ankara', desc:'Interior design project. 1,000 m². 2019.', img:'assets/projects/office-ankara-1000.jpg' },
     { tag:'SPACE / RESIDENTIAL', name:'Residence — Angora, Ankara', desc:'Interior design project. 200 m². 2019. Visualization.', img:'assets/projects/residence-angora.jpg' },
     { tag:'SPACE / WORKPLACE', name:'Office — Ankara', desc:'Interior design project with follow-up services. 500 m². 2019.', img:'assets/projects/office-ankara-500.jpg' },
-    { tag:'SPACE / PUBLIC', name:'DHMİ Amasya Merzifon Airport', desc:'Architectural project. General Directorate of State Airports Authority. 100,000 m². 2019.', img:'assets/projects/dhmi-amasya-merzifon-airport.jpg', hero:true },
-    { tag:'SPACE / CULTURAL', name:'Tunceli (Dersim) City Museum', desc:'Interior design project. Ministry of Culture and Tourism. 2,000 m². 2016.', img:'assets/projects/tunceli-city-museum.jpg', hero:true },
+    { tag:'SPACE / PUBLIC', name:'DHMİ Amasya Merzifon Airport', desc:'Architectural project. General Directorate of State Airports Authority. 100,000 m². 2019.', img:'assets/projects/dhmi-amasya-merzifon-airport.jpg' },
+    { tag:'SPACE / CULTURAL', name:'Tunceli (Dersim) City Museum', desc:'Interior design project. Ministry of Culture and Tourism. 2,000 m². 2016.', img:'assets/projects/tunceli-city-museum.jpg' },
     { tag:'SPACE / COMMERCIAL', name:'Container Cafe — Eskişehir', desc:'Architectural project. 60 m². 2018.', img:'assets/projects/container-cafe-eskisehir.jpg' },
-    { tag:'DESIGN SPACE / RENOVATION', name:'MAK-İŞ Co.', desc:'Architectural renovation and interior design with follow-up services. 1,000 m². 2016.', img:'assets/projects/mak-is.jpg', hero:true },
-    { tag:'SPACE / PUBLIC', name:'İzmir Selçuk Bus Station', desc:'Architectural project. İzmir Metropolitan Municipality. 20,000 m². 2015.', img:'assets/projects/izmir-selcuk-bus-station.jpg', hero:true },
+    { tag:'DESIGN SPACE / RENOVATION', name:'MAK-İŞ Co.', desc:'Architectural renovation and interior design with follow-up services. 1,000 m². 2016.', img:'assets/projects/mak-is.jpg' },
+    { tag:'SPACE / PUBLIC', name:'İzmir Selçuk Bus Station', desc:'Architectural project. İzmir Metropolitan Municipality. 20,000 m². 2015.', img:'assets/projects/izmir-selcuk-bus-station.jpg' },
     { tag:'SPACE / CULTURAL', name:'Milas Museum', desc:'Interior design project. Ministry of Culture and Tourism. 500 m². 2016. Visualization.', img:'assets/projects/milas-museum.jpg' },
     { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Ankara', desc:'Interior design project with follow-up services. 600 m². 2015.', img:'assets/projects/private-villa-ankara.jpg' },
     
@@ -714,8 +711,16 @@
   const heroTicks=document.getElementById('heroTicks');
   const heroTagEl=document.getElementById('heroTag');
   const heroNameEl=document.getElementById('heroName');
-  const heroShots=[...projects.filter(p=>p.hero), ...archive]
-    .map(p=>({ img:p.img, tag:p.tag, name:p.name }));
+  // The opening rotation, in this order. Kept apart from the carousel: the hero
+  // needs wide frames and a sequence of its own, which is not the project order.
+  const heroShots=[
+    { img:'assets/hero/01-private-residence.jpg', tag:'SPACE / RESIDENTIAL · VISUALIZATION', name:'Private residence' },
+    { img:'assets/hero/02-airport-departures.jpg', tag:'SPACE / PUBLIC', name:'DHMİ Amasya Merzifon Airport' },
+    { img:'assets/hero/03-airport-terminal.jpg', tag:'SPACE / PUBLIC', name:'DHMİ Amasya Merzifon Airport' },
+    { img:'assets/hero/04-office-ankara.jpg', tag:'SPACE / WORKPLACE', name:'Office — Ankara' },
+    { img:'assets/hero/05-mak-is-facade.jpg', tag:'DESIGN SPACE / RENOVATION', name:'MAK-İŞ Co.' },
+    { img:'assets/hero/06-private-villa.jpg', tag:'SPACE / INTERIOR DESIGN', name:'Private Villa' }
+  ];
   const lazyFrames=[];
   heroShots.forEach((s,n)=>{
     const d=document.createElement('div');
