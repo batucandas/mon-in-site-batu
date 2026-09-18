@@ -6,3 +6,6 @@ wrangler.toml
 .assetsignore
 .gitignore
 README.md
+
+# internal working document — versioned in the repo, not published on the site
+docs/

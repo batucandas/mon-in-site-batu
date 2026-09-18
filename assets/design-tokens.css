@@ -1,0 +1,43 @@
+/* MON-IN design tokens
+ * Generated from docs/brand-guidelines.md — edit that file, not this one.
+ *
+ * Variable names match the ones already used in index.html, so this file can be
+ * dropped into any MON-IN project (site, project manager, finance) unchanged.
+ */
+
+:root {
+  /* ground */
+  --bg: #F7F7F5;
+  --bg-2: #EFEFEC;
+
+  /* ink */
+  --ink: #141412;
+  --ink-soft: #3A3A36;
+
+  /* neutrals */
+  --gray: #7C7C76;
+  --gray-light: #DBDBD6;
+  --line: #E2E2DD;
+
+  /* accent — never a large fill */
+  --red: #D71920;
+
+  /* dark ground: the site hero only, no other surface */
+  --night: #0E0E0C;
+  --paper-dk: #EDEDE8;
+  --gray-dk: #A9A9A1;
+
+  /* type */
+  --font-display: 'Archivo', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* tracking */
+  --track-display: -0.045em;
+  --track-heading: -0.02em;
+  --track-label: 0.15em;
+  --track-lockup: 0.12em;
+
+  /* form */
+  --radius: 0;
+  --hairline: 1px;
+}

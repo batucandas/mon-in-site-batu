@@ -1,0 +1,57 @@
+{
+  "brand": "MON-IN",
+  "source": "docs/brand-guidelines.md",
+  "note": "MON-IN's palette is flat and hand-picked. There are deliberately no 50-900 tint ramps: every value below is used as-is. Do not generate intermediate shades.",
+  "primitive": {
+    "color": {
+      "paper": { "$value": "#F7F7F5", "$type": "color" },
+      "paper-tint": { "$value": "#EFEFEC", "$type": "color" },
+      "ink": { "$value": "#141412", "$type": "color" },
+      "ink-soft": { "$value": "#3A3A36", "$type": "color" },
+      "gray": { "$value": "#7C7C76", "$type": "color" },
+      "gray-light": { "$value": "#DBDBD6", "$type": "color" },
+      "line": { "$value": "#E2E2DD", "$type": "color" },
+      "red": { "$value": "#D71920", "$type": "color" },
+      "night": { "$value": "#0E0E0C", "$type": "color" },
+      "paper-on-dark": { "$value": "#EDEDE8", "$type": "color" },
+      "gray-on-dark": { "$value": "#A9A9A1", "$type": "color" }
+    },
+    "font": {
+      "display": { "$value": "'Archivo', system-ui, -apple-system, sans-serif", "$type": "fontFamily" },
+      "body": { "$value": "'Inter', system-ui, -apple-system, sans-serif", "$type": "fontFamily" }
+    }
+  },
+  "semantic": {
+    "color": {
+      "background": { "$value": "{primitive.color.paper}", "$type": "color" },
+      "background-alt": { "$value": "{primitive.color.paper-tint}", "$type": "color" },
+      "text": { "$value": "{primitive.color.ink}", "$type": "color" },
+      "text-secondary": { "$value": "{primitive.color.ink-soft}", "$type": "color" },
+      "text-muted": { "$value": "{primitive.color.gray}", "$type": "color" },
+      "border": { "$value": "{primitive.color.line}", "$type": "color" },
+      "accent": { "$value": "{primitive.color.red}", "$type": "color" },
+      "surface-dark": { "$value": "{primitive.color.night}", "$type": "color" },
+      "text-on-dark": { "$value": "{primitive.color.paper-on-dark}", "$type": "color" },
+      "text-muted-on-dark": { "$value": "{primitive.color.gray-on-dark}", "$type": "color" }
+    },
+    "tracking": {
+      "display": { "$value": "-0.045em", "$type": "dimension" },
+      "heading": { "$value": "-0.02em", "$type": "dimension" },
+      "label": { "$value": "0.15em", "$type": "dimension" },
+      "lockup": { "$value": "0.12em", "$type": "dimension" }
+    },
+    "radius": {
+      "default": { "$value": "0", "$type": "dimension" }
+    },
+    "border-width": {
+      "hairline": { "$value": "1px", "$type": "dimension" }
+    }
+  },
+  "accessibility": {
+    "measured": "WCAG 2.1 contrast ratios against their intended ground",
+    "failsNormalText": [
+      { "color": "#7C7C76", "on": "#F7F7F5", "ratio": 3.91, "guidance": "labels and kickers only, never body copy" },
+      { "color": "#D71920", "on": "#0E0E0C", "ratio": 3.73, "guidance": "short tags only, never body copy" }
+    ]
+  }
+}
