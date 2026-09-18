@@ -1,0 +1,8 @@
+# local safety copies taken before edits — keep on disk, out of the repo
+*.bak
+*.bak-*
+
+# os junk
+.DS_Store
+Thumbs.db
+desktop.ini
