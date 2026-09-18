@@ -44,7 +44,11 @@
   nav a:hover::after{ width:100%; }
   .lang-btn{ border:0; background:none; color:var(--ink); font:600 .78rem 'Inter',sans-serif; letter-spacing:.12em; cursor:pointer; margin-left:28px; transition:color .3s ease; }
   header.on-dark .lang-btn{ color:#fff; }
-  .nav-toggle{ display:none; }
+  .nav-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:34px; height:34px; padding:0; margin-left:14px; border:0; background:none; cursor:pointer; }
+  .nav-toggle span{ display:block; width:22px; height:1.5px; background:var(--ink);
+    transition:transform .3s ease, background .3s ease; }
+  header.on-dark .nav-toggle span{ background:#fff; }
 
   /* ================= SLIDES / PAGINATION ================= */
   #slides{ position:relative; width:100%; height:var(--vh); overflow:hidden; }
@@ -189,6 +193,10 @@
   .car-arrows{ display:flex; gap:10px; margin-top:26px; }
   .car-arrows button{ width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:var(--bg); font-size:1rem; cursor:pointer; transition:background .2s ease; }
   .car-arrows button:hover{ background:var(--bg-2); }
+  /* the page counter tracks slides, not projects — the carousel needs its own */
+  .car-count{ align-self:center; margin-left:8px; font-size:.78rem; letter-spacing:.08em;
+    color:var(--gray); font-variant-numeric:tabular-nums; }
+  .car-count b{ color:var(--ink); font-family:'Archivo',sans-serif; font-weight:700; }
   .car-card{ background:var(--bg-2); display:grid; grid-template-columns:1fr 1fr; overflow:hidden; min-height:300px; }
   .car-card img{ width:100%; height:100%; object-fit:cover; transition:opacity .3s ease; }
   .car-card-info{ padding:30px; display:flex; flex-direction:column; justify-content:center; }
@@ -237,8 +245,26 @@
   @media (max-width:900px){
     header{ padding:20px 20px; }
     nav{ display:none; }
+    .nav-toggle{ display:flex; }
+    /* the panel is always light, so its links and bars stay dark even over the dark hero */
+    header.nav-open nav{ display:flex; flex-direction:column; gap:0;
+      position:fixed; left:0; right:0; top:64px; bottom:0; z-index:490;
+      background:var(--bg); padding:10px 20px 40px; overflow-y:auto; }
+    header.nav-open nav a{ color:var(--ink); font-size:1.05rem; padding:17px 2px;
+      border-bottom:1px solid var(--line); }
+    header.nav-open nav a::after{ display:none; }
+    header.nav-open .nav-toggle span{ background:var(--ink); }
+    header.nav-open .nav-toggle span:first-child{ transform:translateY(3.25px) rotate(45deg); }
+    header.nav-open .nav-toggle span:last-child{ transform:translateY(-3.25px) rotate(-45deg); }
+    header.nav-open .brand-name, header.nav-open .lang-btn{ color:var(--ink); }
+    header.nav-open .brand img{ filter:none; }
     .lang-btn{ margin-left:14px; }
-    .discipline, .exhibition, .case, .carousel-sec, .philosophy, .people, .statement, .intersection, .why, .contact{ padding-left:20px; padding-right:20px; }
+    /* the header is fixed, so centred slide content needs to clear it or it slides underneath */
+    .discipline, .exhibition, .case, .carousel-sec, .philosophy, .people, .statement, .intersection, .why, .contact{ padding-left:20px; padding-right:20px; padding-top:72px; }
+    .case-partners{ display:grid; grid-template-columns:repeat(4,1fr); align-items:center;
+      justify-items:center; gap:14px 10px; margin-top:16px; }
+    .case-partners .lbl{ grid-column:1 / -1; justify-self:start; }
+    .case-partners img{ height:18px; opacity:.72; }
     .hero-headline{ padding:0 20px; }
     .hero-sub, .hero-motto{ padding-left:20px; padding-right:20px; }
     .hero{ padding-bottom:118px; }
@@ -283,6 +309,7 @@
     <a data-goto="12" data-en="Contact" data-tr="İletişim">İletişim</a>
   </nav>
   <button class="lang-btn" id="langBtn">EN</button>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
 </header>
 
 <div id="slides">
@@ -447,7 +474,7 @@
       <div class="kicker">SELECTED WORK</div>
       <h2 data-en="Architectural heritage. New capabilities." data-tr="Mimari geçmiş. Yeni nesil yetkinlikler.">Mimari geçmiş. Yeni nesil yetkinlikler.</h2>
       <p class="work-note" data-en="Selected architectural work and emerging technology and infrastructure capabilities, brought together in one story." data-tr="Mimarlık portföyümüzden seçilmiş işler ile yeni teknoloji ve altyapı çalışmalarını aynı hikâyede buluşturuyoruz.">Mimarlık portföyümüzden seçilmiş işler ile yeni teknoloji ve altyapı çalışmalarını aynı hikâyede buluşturuyoruz.</p>
-      <div class="car-arrows"><button aria-label="Previous" id="carPrev">←</button><button aria-label="Next" id="carNext">→</button></div>
+      <div class="car-arrows"><button aria-label="Previous" id="carPrev">←</button><button aria-label="Next" id="carNext">→</button><span class="car-count"><b id="carNum">01</b> / <span id="carTot">13</span></span></div>
     </div>
     <div class="car-card reveal d1"><img alt="Selected MON-IN work" id="carImg"><div class="car-card-info"><div class="car-tag" id="carTag"></div><div class="car-name" id="carName"></div><div class="car-desc" id="carDesc"></div></div></div>
   </div>
@@ -492,8 +519,8 @@
       <a class="contact-cta" href="mailto:info@mon-in.com">info@mon-in.com ↗</a>
     </div>
     <div class="contact-right reveal d1">
-      <div><span>PHONE</span><strong>+90 312 911 08 18</strong></div>
-      <div><span>ANKARA</span><strong>Kızılırmak Mah. 1443 Cad. No: 25B<br>İç Kapı No: 8, Çankaya</strong></div>
+      <div><span data-en="Phone" data-tr="Telefon">Telefon</span><strong>+90 312 911 08 18</strong></div>
+      <div><span>ANKARA</span><strong data-en="Kızılırmak Mah. 1443 Cad. No: 25B<br>Suite 8, Çankaya" data-tr="Kızılırmak Mah. 1443 Cad. No: 25B<br>İç Kapı No: 8, Çankaya">Kızılırmak Mah. 1443 Cad. No: 25B<br>İç Kapı No: 8, Çankaya</strong></div>
       <div><span>BODRUM</span><strong>Bodrum, Muğla</strong></div>
       <div class="contact-links"><a href="https://www.instagram.com/" rel="noopener" target="_blank">Instagram ↗</a><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn ↗</a></div>
     </div>
@@ -565,12 +592,22 @@
   document.getElementById('pgNext').addEventListener('click', goForward);
   document.getElementById('pgPrev').addEventListener('click', goBackward);
 
+  const navToggle=document.getElementById('navToggle');
+  const navOpen=()=>header.classList.contains('nav-open');
+  function closeNav(){ header.classList.remove('nav-open'); navToggle.setAttribute('aria-expanded','false'); }
+  navToggle.addEventListener('click', ()=>{
+    const open=header.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  addEventListener('keydown', e=>{ if(e.key==='Escape' && navOpen()) closeNav(); });
+
   document.querySelectorAll('[data-goto]').forEach(el=>{
-    el.addEventListener('click', e=>{ e.preventDefault(); goTo(parseInt(el.dataset.goto,10)); });
+    el.addEventListener('click', e=>{ e.preventDefault(); closeNav(); goTo(parseInt(el.dataset.goto,10)); });
   });
 
   let wheelLock=false;
   window.addEventListener('wheel', function(e){
+    if(navOpen()) return;              // let the mobile menu panel scroll on its own
     e.preventDefault();
     if(wheelLock || Math.abs(e.deltaY)<8) return;
     wheelLock=true;
@@ -580,8 +617,9 @@
 
   let touchStartY=0, touchLock=false;
   window.addEventListener('touchstart', e=>{ touchStartY=e.touches[0].clientY; }, {passive:true});
-  window.addEventListener('touchmove', e=>{ e.preventDefault(); }, {passive:false});
+  window.addEventListener('touchmove', e=>{ if(!navOpen()) e.preventDefault(); }, {passive:false});
   window.addEventListener('touchend', function(e){
+    if(navOpen()) return;
     const dy=touchStartY-e.changedTouches[0].clientY;
     if(touchLock || Math.abs(dy)<44) return;
     touchLock=true;
@@ -590,6 +628,7 @@
   }, {passive:true});
 
   window.addEventListener('keydown', function(e){
+    if(navOpen()) return;
     if(['ArrowDown','PageDown'].includes(e.key)){ e.preventDefault(); goForward(); }
     if(['ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); goBackward(); }
   });
@@ -629,8 +668,11 @@
   ];
   let pi=0;
   const carImg=document.getElementById('carImg'), carTag=document.getElementById('carTag'), carName=document.getElementById('carName'), carDesc=document.getElementById('carDesc');
+  const carNum=document.getElementById('carNum');
+  document.getElementById('carTot').textContent=String(projects.length).padStart(2,'0');
   function renderProject(n){
     const p=projects[n]; carImg.style.opacity=0;
+    carNum.textContent=String(n+1).padStart(2,'0');
     setTimeout(()=>{ carImg.src=p.img; carTag.textContent=p.tag; carName.textContent=p.name; carDesc.textContent=p.desc; carImg.style.opacity=1; }, 160);
   }
   renderProject(0);
