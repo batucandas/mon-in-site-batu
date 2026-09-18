@@ -608,16 +608,24 @@
 
   // Photography shown in the opening rotation that is not a catalogued project.
   const archive=[
-    { img:'assets/projects/exhibition-stand.jpg', tag:'CONNECT / EXHIBITION', name:'Exhibition & stand design' },
-    { img:'assets/archive/metal-mesh-facade.jpg', tag:'MON-IN / ARCHIVE', name:'Studio archive' }
+    { img:'assets/projects/exhibition-stand.jpg', tag:'CONNECT / EXHIBITION', name:'Exhibition & stand design' }
   ];
   // Every project lives here once. To add one, append an entry below and drop its
   // photograph in assets/projects/. Set hero:true to also show it in the opening rotation.
   const projects=[
-    { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Gümüşlük, Bodrum', desc:'Interior design project with follow-up services. 2020.', img:'assets/projects/private-villa-gumusluk.jpg', hero:true },
-    { tag:'SPACE / PUBLIC', name:'DHMİ Amasya Merzifon Airport', desc:'Architectural project. 100,000 m². 2019.', img:'assets/projects/dhmi-amasya-merzifon-airport.jpg', hero:true },
+    { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Gümüşlük, Bodrum', desc:'Interior design project with follow-up services. 2020.', img:'assets/projects/private-villa-gumusluk.jpg' },
+    { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Spain', desc:'Interior design project. 2019.', img:'assets/projects/private-villa-spain.jpg' },
+    { tag:'SPACE / WORKPLACE', name:'Office — Ankara', desc:'Interior design project. 1,000 m². 2019.', img:'assets/projects/office-ankara-1000.jpg' },
+    { tag:'SPACE / RESIDENTIAL', name:'Residence — Angora, Ankara', desc:'Interior design project. 200 m². 2019. Visualization.', img:'assets/projects/residence-angora.jpg' },
+    { tag:'SPACE / WORKPLACE', name:'Office — Ankara', desc:'Interior design project with follow-up services. 500 m². 2019.', img:'assets/projects/office-ankara-500.jpg' },
+    { tag:'SPACE / PUBLIC', name:'DHMİ Amasya Merzifon Airport', desc:'Architectural project. General Directorate of State Airports Authority. 100,000 m². 2019.', img:'assets/projects/dhmi-amasya-merzifon-airport.jpg', hero:true },
     { tag:'SPACE / CULTURAL', name:'Tunceli (Dersim) City Museum', desc:'Interior design project. Ministry of Culture and Tourism. 2,000 m². 2016.', img:'assets/projects/tunceli-city-museum.jpg', hero:true },
-    { tag:'DESIGN SPACE / RENOVATION', name:'MAK-İŞ Co.', desc:'Architectural renovation & interior design. 1,000 m². 2016.', img:'assets/projects/mak-is.jpg', hero:true }
+    { tag:'SPACE / COMMERCIAL', name:'Container Cafe — Eskişehir', desc:'Architectural project. 60 m². 2018.', img:'assets/projects/container-cafe-eskisehir.jpg' },
+    { tag:'DESIGN SPACE / RENOVATION', name:'MAK-İŞ Co.', desc:'Architectural renovation and interior design with follow-up services. 1,000 m². 2016.', img:'assets/projects/mak-is.jpg', hero:true },
+    { tag:'SPACE / PUBLIC', name:'İzmir Selçuk Bus Station', desc:'Architectural project. İzmir Metropolitan Municipality. 20,000 m². 2015.', img:'assets/projects/izmir-selcuk-bus-station.jpg', hero:true },
+    { tag:'SPACE / CULTURAL', name:'Milas Museum', desc:'Interior design project. Ministry of Culture and Tourism. 500 m². 2016. Visualization.', img:'assets/projects/milas-museum.jpg' },
+    { tag:'SPACE / INTERIOR DESIGN', name:'Private Villa — Ankara', desc:'Interior design project with follow-up services. 600 m². 2015.', img:'assets/projects/private-villa-ankara.jpg' },
+    { tag:'SPACE / INTERIOR DESIGN', name:'Decoration', desc:'Interior design project. 2017.', img:'assets/projects/decoration.jpg', hero:true }
   ];
   let pi=0;
   const carImg=document.getElementById('carImg'), carTag=document.getElementById('carTag'), carName=document.getElementById('carName'), carDesc=document.getElementById('carDesc');
@@ -642,7 +650,7 @@
     const d=document.createElement('div');
     d.className='hero-frame'+(n===0?' on':'');
     const i=document.createElement('i');
-    if(n<2) i.style.backgroundImage='url("'+s.img+'")'; else lazyFrames.push([i,s.img]);
+    if(n===0) i.style.backgroundImage='url("'+s.img+'")'; else lazyFrames.push([i,s.img]);
     d.appendChild(i); heroFrames.appendChild(d);
     const t=document.createElement('s');
     if(n===0) t.className='on';
