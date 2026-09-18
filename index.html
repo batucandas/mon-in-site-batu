@@ -329,9 +329,10 @@
     .hero-cap{ left:20px; bottom:58px; max-width:calc(100% - 40px); }
     .hero-cap .n{ font-size:.92rem; }
     .hero-scrim{ background:linear-gradient(0deg, rgba(14,14,12,.88) 0%, rgba(14,14,12,.34) 58%, rgba(14,14,12,.20) 100%); }
-    .dual-hero{ display:flex; flex-direction:column; font-size:clamp(2rem,10.5vw,3.4rem); line-height:1.05; }
-    .dual-hero span{ grid-column:unset!important; grid-row:unset!important; align-self:flex-start!important; }
-    .dual-hero .r2{ margin:2px 0; }
+    /* the lockup keeps its two columns on phones — DESIGN stays beside SPACE, and
+       TECHNICAL SPACE sets the width. Only the size changes, sized so the longer of
+       the two rows fits inside the 20px gutters down to a 320px screen. */
+    .dual-hero{ font-size:clamp(1.4rem,8.2vw,3.4rem); }
     .discipline-grid, .exhibition-grid, .case-head, .people-grid, .phil-grid, .contact-grid, .car-grid, .intersection-inner{ grid-template-columns:1fr!important; gap:26px!important; }
     .discipline-visual, .exhibition-image{ height:26vh; min-height:190px; order:-1; }
     .case-image{ height:20vh; min-height:150px; }
