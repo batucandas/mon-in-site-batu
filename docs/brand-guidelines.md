@@ -288,7 +288,13 @@ veya karmaşık bir metin, tasarımla çelişir ve ikisini birden zayıflatır.
 
 ## 6. Fotoğraf ve Görsel Dil
 
-- Gerçek projeler. Stok fotoğraf, render ve temsili görsel kullanılmaz.
+- Gerçek projeler. **Stok fotoğraf kullanılmaz** — ne kadar iyi olursa olsun,
+  başkasının görseli stüdyonun işini zayıflatır.
+- **Render kullanılır, ama künyesinde belirtilir.** Görselleştirme MON-IN için
+  gizlenecek bir eksiklik değil, satılan bir üründür: kurucunun unvanı "Digital
+  Artist", yetkinlik listesinde `VISUALIZATION` var ve katalog 360° VR turlarını
+  ayrı bir hizmet olarak anlatıyor. Kural şudur: render göstermek serbesttir,
+  yapılmış işmiş gibi göstermek değildir. Künyenin sonuna `Visualization.` eklenir.
 - Mimari çerçeveleme: yapı tam olarak kadrajda, insan kalabalığı yok.
 - Doğal ışık tercih edilir; gece çekimlerinde sıcak yapay ışık kabul edilir.
 - Renk düzeltmesi nötr kalır. Filtre, vinyet ve ağır kontrast uygulanmaz.
