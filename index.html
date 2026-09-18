@@ -169,10 +169,9 @@
   .case-meta{ display:flex; gap:20px; justify-content:flex-end; font-size:.64rem; letter-spacing:.1em; color:var(--gray); text-transform:uppercase; margin:0 0 14px; flex-wrap:wrap; }
   .case-image{ height:28vh; min-height:180px; background:#191917; position:relative; overflow:hidden; }
   .case-image img{ width:100%; height:100%; object-fit:cover; }
-  .case-image.fallback{ display:flex; align-items:center; justify-content:center; color:#fff; text-align:center; }
-  .case-fallback{ display:none; font-family:'Archivo',sans-serif; font-size:2.6rem; line-height:.9; letter-spacing:-.03em; }
-  .case-image.fallback .case-fallback{ display:block; }
-  .case-fallback small{ font:300 .76rem 'Inter',sans-serif; letter-spacing:0; color:#aaa; }
+  /* a logo rather than a photograph: sit it whole on the black it was drawn on */
+  .case-image.mark{ background:#000; }
+  .case-image.mark img{ object-fit:contain; padding:16px; }
   .case-bottom{ display:flex; justify-content:space-between; gap:16px; padding-top:12px; font-size:.72rem; color:var(--gray); flex-wrap:wrap; }
   .case-bottom strong{ font-weight:500; color:var(--ink); }
 
@@ -419,7 +418,7 @@
       <p data-en="Innovations &amp; Security in Space. MON-IN handled concept, digital platform, brand communication, event production, sponsor/participant coordination, venue and technical operations, and panelist coordination." data-tr="Innovations &amp; Security in Space. MON-IN; konsept, dijital platform, marka iletişimi, etkinlik üretimi, sponsor/katılımcı koordinasyonu, mekan ve teknik operasyon ile panelist koordinasyonunu üstlendi.">Innovations &amp; Security in Space. MON-IN; konsept, dijital platform, marka iletişimi, etkinlik üretimi, sponsor/katılımcı koordinasyonu, mekan ve teknik operasyon ile panelist koordinasyonunu üstlendi.</p>
     </div>
     <div class="case-meta reveal d1"><span>BTK CONFERENCE HALL · ANKARA</span><span>29 APRIL 2026</span><span>SPACE × CYBERSECURITY × INDUSTRY</span></div>
-    <div class="case-image reveal d2" id="caseImageWrap"><img alt="INSECSPACE reference visual" onerror="this.style.display='none';this.parentElement.classList.add('fallback')" src="https://www.aa.com.tr/uploads/userFiles/3920130/INSECSPACE.jpg"><div class="case-fallback">INSECSPACE<br><small>BTK Conference Hall · Ankara · 29 April 2026</small></div></div>
+    <div class="case-image mark reveal d2"><img alt="INSECSPACE 2026 — Innovations &amp; Security in Space" loading="lazy" src="assets/projects/insecspace-logo.jpg"></div>
     <div class="case-bottom reveal d3"><strong>Concept · Digital Platform · Event Production · Industry Coordination</strong><a href="https://www.insecspace.org.tr" rel="noopener" target="_blank">insecspace.org.tr ↗</a></div>
   </div>
 </section>
