@@ -54,6 +54,10 @@
   nav{ display:flex; gap:32px; }
   nav a{ font-size:0.84rem; color:var(--ink); position:relative; padding-bottom:3px; cursor:pointer; transition:color .3s ease; }
   header.on-dark nav a{ color:#fff; }
+  /* the mark stays the mark wherever it appears; --red-dk because the brand red
+     only reaches 3.73:1 over the dark hero */
+  nav a.x{ color:var(--red); font-weight:600; }
+  header.on-dark nav a.x{ color:var(--red-dk); }
   nav a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:currentColor; transition:width .3s ease; }
   nav a:hover::after{ width:100%; }
   .lang-btn{ border:0; background:none; color:var(--ink); font:600 .78rem 'Inter',sans-serif; letter-spacing:.12em; cursor:pointer; margin-left:28px; transition:color .3s ease; }
@@ -94,8 +98,10 @@
      centred across the whole lockup rather than sitting over the second column */
   .dual-hero .r1-a{ grid-column:1; grid-row:1; justify-self:end; font-weight:400; color:var(--ink-soft); align-self:end; }
   .dual-hero .r1-b{ grid-column:2; grid-row:1; font-weight:800; }
+  /* the glyph's ink sits low in its em box, so the row needs an optical nudge up */
   .dual-hero .r2{ grid-column:2; grid-row:2; justify-self:center; align-self:center;
-    display:grid; place-items:center; font-weight:800; color:var(--red); font-size:1.05em; line-height:1; }
+    display:grid; place-items:center; font-weight:800; color:var(--red); font-size:1.05em;
+    line-height:1; transform:translateY(-.06em); }
   .dual-hero .r3-b{ grid-column:2; grid-row:3; font-weight:800; }
   .dual-hero .r3-a{ grid-column:1; grid-row:3; justify-self:end; font-weight:400; color:var(--ink-soft); align-self:end; }
   .hero-sub{ max-width:620px; margin:30px auto 0; padding:0 48px; font-size:1.06rem; color:var(--ink-soft); font-weight:300; line-height:1.65; }
@@ -246,7 +252,7 @@
   .phil-grid{ display:grid; grid-template-columns:1fr 1fr; gap:5vw; align-items:center; max-width:1200px; margin:0 auto; width:100%; }
   .about-title{ font-size:clamp(1.8rem,3.6vw,2.7rem); line-height:1.08; margin:8px 0 18px; max-width:12ch; letter-spacing:-.03em; }
   .phil-text p{ font-size:.98rem; line-height:1.6; max-width:42ch; font-weight:300; color:var(--ink-soft); }
-  .about-small{ margin-top:20px!important; font-family:'Archivo',sans-serif; font-size:1.2rem!important; font-weight:600!important; }
+  .about-small{ margin-top:20px!important; font-family:'Archivo',sans-serif; font-size:1.2rem!important; font-weight:600!important; color:var(--red); }
   .about-stats{ display:flex; flex-direction:column; border-top:1px solid var(--line); }
   .about-stats div{ padding:16px 0; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:4px; }
   .about-stats strong{ font:700 1.2rem 'Archivo',sans-serif; }
@@ -292,6 +298,7 @@
       z-index:480; background:rgba(20,20,18,.34); }
     header.nav-open nav a{ color:var(--ink); font-size:1.02rem; padding:15px 2px;
       border-bottom:1px solid var(--line); }
+    header.nav-open nav a.x{ color:var(--red); }
     header.nav-open nav a:last-child{ border-bottom:0; }
     header.nav-open nav a::after{ display:none; }
     header.nav-open .nav-toggle span{ background:var(--ink); }
@@ -344,7 +351,7 @@
   </a>
   <nav id="mainNav">
     <a data-goto="4" data-en="Design Space" data-tr="Design Space">Design Space</a>
-    <a data-goto="5" data-en="×" data-tr="×">×</a>
+    <a class="x" data-goto="5" data-en="×" data-tr="×">×</a>
     <a data-goto="7" data-en="Technical Space" data-tr="Technical Space">Technical Space</a>
     <a data-goto="10" data-en="Selected Work" data-tr="Projeler">Projeler</a>
     <a data-goto="12" data-en="About" data-tr="Hakkımızda">Hakkımızda</a>
