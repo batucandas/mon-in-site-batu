@@ -137,7 +137,7 @@
   .statement-note{ max-width:640px; margin:26px auto 0; font-size:1.02rem; line-height:1.7; color:var(--ink-soft); font-weight:300; }
 
   /* ---------- People / Founders ---------- */
-  .people{ justify-content:center; padding:0 48px; }
+  .people{ justify-content:center; padding:0 48px; background:#FFFFFF; }
   .people-wrap{ max-width:1200px; margin:0 auto; width:100%; }
   .people-head{ margin-bottom:44px; }
   .people-head h2{ font-size:clamp(2rem,4.4vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin-top:8px; }
@@ -145,8 +145,13 @@
   /* one founder to a slide, so the card gets room and the portrait can be larger */
   .people-grid.single{ grid-template-columns:minmax(0,620px); }
   .person-card{ border-top:1px solid var(--line); padding-top:20px; }
-  .person-photo{ width:clamp(128px,19vh,210px); aspect-ratio:1; margin-bottom:24px; overflow:hidden; }
-  .person-photo img{ width:100%; height:100%; object-fit:cover; }
+  /* The portraits are cut out over a white-over-grey ground. The grey carries on to
+     the left edge of the slide, so the frame stops reading as a pasted square and the
+     figure stands on a line instead. --split is each photograph's own measured one. */
+  .person-photo{ position:relative; width:clamp(128px,19vh,210px); aspect-ratio:1; margin-bottom:24px; }
+  .person-photo::before{ content:''; position:absolute; top:var(--split); bottom:0;
+    right:100%; width:100vw; background:#393939; }
+  .person-photo img{ position:relative; width:100%; height:100%; object-fit:cover; }
   .founder-index{ font-size:0.8rem; color:var(--gray); margin-bottom:8px; }
   .founder-name{ font-weight:800; font-size:clamp(1.8rem, 3.6vw, 2.6rem); line-height:1.05; }
   .founder-role{ margin-top:14px; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray); line-height:1.5; }
@@ -374,7 +379,7 @@
 </section>
 
 <!-- 2 PEOPLE — ÇAĞKAN -->
-<section class="slide people tint">
+<section class="slide people">
   <div class="people-wrap">
     <div class="people-head reveal">
       <div class="kicker">PEOPLE BEHIND MON-IN</div>
@@ -382,7 +387,7 @@
     </div>
     <div class="people-grid single">
       <div class="person-card reveal">
-        <div class="person-photo"><img src="assets/people/cagkan-yazici.jpg" alt="Çağkan Yazıcı" loading="lazy"></div>
+        <div class="person-photo" style="--split:53.1%"><img src="assets/people/cagkan-yazici.jpg" alt="Çağkan Yazıcı" loading="lazy"></div>
         <div class="founder-index">FOUNDER</div>
         <h3 class="founder-name">ÇAĞKAN YAZICI</h3>
         <div class="founder-role">FOUNDER &amp; CREATIVE DIRECTOR · INTERIOR ARCHITECT / DIGITAL ARTIST · BILKENT UNIVERSITY</div>
@@ -393,7 +398,7 @@
 </section>
 
 <!-- 3 PEOPLE — ALİ -->
-<section class="slide people tint">
+<section class="slide people">
   <div class="people-wrap">
     <div class="people-head reveal">
       <div class="kicker">PEOPLE BEHIND MON-IN</div>
@@ -401,7 +406,7 @@
     </div>
     <div class="people-grid single">
       <div class="person-card reveal">
-        <div class="person-photo"><img src="assets/people/ali-yazici.jpg" alt="M. Ali Yazıcı" loading="lazy"></div>
+        <div class="person-photo" style="--split:51.9%"><img src="assets/people/ali-yazici.jpg" alt="M. Ali Yazıcı" loading="lazy"></div>
         <div class="founder-index">CO-FOUNDER</div>
         <h3 class="founder-name">M. ALI YAZICI</h3>
         <div class="founder-role">CO-FOUNDER · ELECTRICAL &amp; ELECTRONICS ENGINEER · MIDDLE EAST TECHNICAL UNIVERSITY</div>
