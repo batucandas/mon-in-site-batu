@@ -118,7 +118,8 @@
   .people-head h2{ font-size:clamp(2rem,4.4vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin-top:8px; }
   .people-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6vw; }
   .person-card{ border-top:1px solid var(--line); padding-top:20px; }
-  .person-mark{ font:800 clamp(3.2rem,6vw,6rem)/.8 'Archivo',sans-serif; letter-spacing:-.05em; margin-bottom:26px; color:var(--gray-light); }
+  .person-photo{ width:clamp(112px,13vh,158px); aspect-ratio:1; margin-bottom:22px; overflow:hidden; }
+  .person-photo img{ width:100%; height:100%; object-fit:cover; }
   .founder-index{ font-size:0.8rem; color:var(--gray); margin-bottom:8px; }
   .founder-name{ font-weight:800; font-size:clamp(1.8rem, 3.6vw, 2.6rem); line-height:1.05; }
   .founder-role{ margin-top:14px; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray); line-height:1.5; }
@@ -326,14 +327,14 @@
     </div>
     <div class="people-grid">
       <div class="person-card reveal">
-        <div class="person-mark">ÇY</div>
+        <div class="person-photo"><img src="assets/people/cagkan-yazici.jpg" alt="Çağkan Yazıcı" loading="lazy"></div>
         <div class="founder-index">01 — FOUNDER</div>
         <h3 class="founder-name">ÇAĞKAN YAZICI</h3>
         <div class="founder-role">FOUNDER &amp; CREATIVE DIRECTOR · INTERIOR ARCHITECT / DIGITAL ARTIST · BILKENT UNIVERSITY</div>
         <p class="founder-desc" data-en="Founder and creative lead of MON-IN. Leads the studio's design language, visualization and spatial experience across architecture and interior architecture projects." data-tr="MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.">MON-IN'in ana kurucusu ve yaratıcı lideri. Mimarlık ve iç mimarlık projelerinde tasarım dili, görselleştirme ve mekânsal deneyim tarafını yönetir.</p>
       </div>
       <div class="person-card reveal d1">
-        <div class="person-mark">AY</div>
+        <div class="person-photo"><img src="assets/people/ali-yazici.jpg" alt="M. Ali Yazıcı" loading="lazy"></div>
         <div class="founder-index">02 — CO-FOUNDER</div>
         <h3 class="founder-name">M. ALI YAZICI</h3>
         <div class="founder-role">CO-FOUNDER · ELECTRICAL &amp; ELECTRONICS ENGINEER · MIDDLE EAST TECHNICAL UNIVERSITY</div>
