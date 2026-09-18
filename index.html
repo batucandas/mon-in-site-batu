@@ -172,6 +172,11 @@
   /* a logo rather than a photograph: sit it whole on the black it was drawn on */
   .case-image.mark{ background:#000; }
   .case-image.mark img{ object-fit:contain; padding:16px; }
+  /* institutional marks: greyscaled so their reds do not compete with the MON-IN × */
+  .case-partners{ display:flex; align-items:center; gap:9px 18px; flex-wrap:wrap; margin-top:14px; }
+  .case-partners .lbl{ font-size:.58rem; letter-spacing:.17em; text-transform:uppercase; color:var(--gray); }
+  .case-partners img{ height:22px; width:auto; filter:grayscale(1); opacity:.6; mix-blend-mode:multiply; transition:opacity .3s ease; }
+  .case-partners img:hover{ opacity:.95; }
   .case-bottom{ display:flex; justify-content:space-between; gap:16px; padding-top:12px; font-size:.72rem; color:var(--gray); flex-wrap:wrap; }
   .case-bottom strong{ font-weight:500; color:var(--ink); }
 
@@ -415,9 +420,20 @@
     <div class="case-head reveal">
       <div class="kicker">SELECTED CASE — 2026</div>
       <h2>INSECSPACE<span>’26</span></h2>
-      <p data-en="Innovations &amp; Security in Space. MON-IN handled concept, digital platform, brand communication, event production, sponsor/participant coordination, venue and technical operations, and panelist coordination." data-tr="Innovations &amp; Security in Space. MON-IN; konsept, dijital platform, marka iletişimi, etkinlik üretimi, sponsor/katılımcı koordinasyonu, mekan ve teknik operasyon ile panelist koordinasyonunu üstlendi.">Innovations &amp; Security in Space. MON-IN; konsept, dijital platform, marka iletişimi, etkinlik üretimi, sponsor/katılımcı koordinasyonu, mekan ve teknik operasyon ile panelist koordinasyonunu üstlendi.</p>
+      <p data-en="Innovations &amp; Security in Space. MON-IN co-founder Ali Yazıcı chairs the conference. The studio handled concept, digital platform, brand communication, event production, sponsor and participant coordination, venue and technical operations, and panelist coordination." data-tr="Innovations &amp; Security in Space. Konferansın başkanlığını MON-IN ortağı Ali Yazıcı yürütüyor. Stüdyo; konsept, dijital platform, marka iletişimi, etkinlik üretimi, sponsor ve katılımcı koordinasyonu, mekân ve teknik operasyon ile panelist koordinasyonunu üstlendi.">Innovations &amp; Security in Space. Konferansın başkanlığını MON-IN ortağı Ali Yazıcı yürütüyor. Stüdyo; konsept, dijital platform, marka iletişimi, etkinlik üretimi, sponsor ve katılımcı koordinasyonu, mekân ve teknik operasyon ile panelist koordinasyonunu üstlendi.</p>
     </div>
-    <div class="case-meta reveal d1"><span>BTK CONFERENCE HALL · ANKARA</span><span>29 APRIL 2026</span><span>SPACE × CYBERSECURITY × INDUSTRY</span></div>
+    <div class="case-meta reveal d1"><span>BTK CONFERENCE HALL · ANKARA</span><span>29 APRIL 2026</span><span>SPACE × CYBERSECURITY × INDUSTRY</span><span>PRESS · TRT HABER · HABER.AERO · DEFENSEHERE</span></div>
+    <div class="case-partners reveal d2">
+      <span class="lbl" data-en="Partners &amp; supporters" data-tr="Paydaşlar ve destekçiler">Paydaşlar ve destekçiler</span>
+      <img src="assets/partners/turkiye-uzay-ajansi.jpg" alt="Türkiye Uzay Ajansı" loading="lazy">
+      <img src="assets/partners/tubitak-uzay.jpg" alt="TÜBİTAK UZAY" loading="lazy">
+      <img src="assets/partners/turksat.jpg" alt="Türksat" loading="lazy">
+      <img src="assets/partners/btk.png" alt="Bilgi Teknolojileri ve İletişim Kurumu" loading="lazy">
+      <img src="assets/partners/telkoder.jpg" alt="TELKODER" loading="lazy">
+      <img src="assets/partners/tosyov.jpg" alt="TOSYÖV" loading="lazy">
+      <img src="assets/partners/tuyad.png" alt="TUYAD" loading="lazy">
+      <img src="assets/partners/anadolu-ajansi.jpg" alt="Anadolu Ajansı" loading="lazy">
+    </div>
     <div class="case-image mark reveal d2"><img alt="INSECSPACE 2026 — Innovations &amp; Security in Space" loading="lazy" src="assets/projects/insecspace-logo.jpg"></div>
     <div class="case-bottom reveal d3"><strong>Concept · Digital Platform · Event Production · Industry Coordination</strong><a href="https://www.insecspace.org.tr" rel="noopener" target="_blank">insecspace.org.tr ↗</a></div>
   </div>
