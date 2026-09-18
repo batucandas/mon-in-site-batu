@@ -1,0 +1,7 @@
+name = "mon-in"
+compatibility_date = "2026-09-14"
+
+# The site is static: one HTML file plus the photography under assets/.
+# No Worker script, no database — Cloudflare serves the files directly.
+[assets]
+directory = "."

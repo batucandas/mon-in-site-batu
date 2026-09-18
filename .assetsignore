@@ -1,0 +1,8 @@
+# Files that live in the repo but must never be served from the CDN.
+# Without this, a local `wrangler deploy` would publish the backup copies too.
+*.bak
+*.bak-*
+wrangler.toml
+.assetsignore
+.gitignore
+README.md
