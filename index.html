@@ -90,11 +90,13 @@
   .hero{ justify-content:center; padding-top:90px; padding-bottom:132px; }
   .hero-headline{ padding:0 48px; max-width:1280px; width:100%; margin:0 auto; }
   .dual-hero{ display:inline-grid; grid-template-columns:max-content max-content; column-gap:.28em; row-gap:.02em; font-size:clamp(2.6rem,7.2vw,6.4rem); line-height:.92; letter-spacing:-.045em; }
-  .dual-hero .r1-a{ grid-column:1; grid-row:1; font-weight:400; color:var(--ink-soft); align-self:end; }
+  /* DESIGN is set flush right so it ends where TECHNICAL ends, and the mark is
+     centred across the whole lockup rather than sitting over the second column */
+  .dual-hero .r1-a{ grid-column:1; grid-row:1; justify-self:end; font-weight:400; color:var(--ink-soft); align-self:end; }
   .dual-hero .r1-b{ grid-column:2; grid-row:1; font-weight:800; }
-  .dual-hero .r2{ grid-column:2; grid-row:2; font-weight:800; color:var(--red); font-size:1.05em; line-height:1; }
+  .dual-hero .r2{ grid-column:1 / -1; grid-row:2; justify-self:center; font-weight:800; color:var(--red); font-size:1.05em; line-height:1; }
   .dual-hero .r3-b{ grid-column:2; grid-row:3; font-weight:800; }
-  .dual-hero .r3-a{ grid-column:1; grid-row:3; font-weight:400; color:var(--ink-soft); align-self:end; }
+  .dual-hero .r3-a{ grid-column:1; grid-row:3; justify-self:end; font-weight:400; color:var(--ink-soft); align-self:end; }
   .hero-sub{ max-width:620px; margin:30px auto 0; padding:0 48px; font-size:1.06rem; color:var(--ink-soft); font-weight:300; line-height:1.65; }
   .hero-motto{ width:100%; padding:34px 48px 0; display:flex; justify-content:space-between; max-width:1280px; margin:0 auto; font-size:.76rem; letter-spacing:.14em; text-transform:uppercase; }
   .hero-motto .scroll-note{ color:var(--gray); letter-spacing:.08em; }
