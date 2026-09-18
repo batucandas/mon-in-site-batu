@@ -325,7 +325,9 @@
        make the header the containing block for the fixed panel inside it, whose
        max-height is calc(100% - 64px) — against a 64px bar that resolves to zero. */
     header.nav-open{ background:rgba(247,247,245,.94); }
-    .lang-btn{ margin-left:14px; }
+    /* space-between spread three items evenly once nav was hidden, stranding EN near
+       the middle; auto margin gathers it and the toggle at the right instead */
+    .lang-btn{ margin-left:auto; }
     /* the header is fixed, so centred slide content needs to clear it or it slides underneath */
     .discipline, .exhibition, .case, .carousel-sec, .philosophy, .people, .statement, .intersection, .why, .contact{ padding-left:20px; padding-right:20px; padding-top:72px; }
     .case-partners{ display:grid; grid-template-columns:repeat(4,1fr); align-items:center;
