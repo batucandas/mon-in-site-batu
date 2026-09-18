@@ -315,16 +315,8 @@
     header.nav-open nav a.x{ color:var(--red); }
     header.nav-open nav a:last-child{ border-bottom:0; }
     header.nav-open nav a::after{ display:none; }
-    header.nav-open .nav-toggle span{ background:var(--ink); }
     header.nav-open .nav-toggle span:first-child{ transform:translateY(3.25px) rotate(45deg); }
     header.nav-open .nav-toggle span:last-child{ transform:translateY(-3.25px) rotate(-45deg); }
-    header.nav-open .brand-name, header.nav-open .lang-btn{ color:var(--ink); }
-    header.nav-open .brand img{ filter:none; }
-    /* The bar has no ground of its own, so over the dark hero its dark marks would
-       land on a dark photograph. Background only, never backdrop-filter: that would
-       make the header the containing block for the fixed panel inside it, whose
-       max-height is calc(100% - 64px) — against a 64px bar that resolves to zero. */
-    header.nav-open{ background:rgba(247,247,245,.94); }
     /* space-between spread three items evenly once nav was hidden, stranding EN near
        the middle; auto margin gathers it and the toggle at the right instead */
     .lang-btn{ margin-left:auto; }
