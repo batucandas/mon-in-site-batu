@@ -29,6 +29,10 @@
     --red-dk:#DE3F45;
     --vh:100vh;
   }
+  /* 100vh measures the viewport without the mobile browser chrome, so a full-screen
+     slide runs taller than the screen. dvh is the browser's own answer; the script
+     that used to measure innerHeight now only runs where dvh is missing. */
+  @supports (height:100dvh){ :root{ --vh:100dvh; } }
   *{ margin:0; padding:0; box-sizing:border-box; }
   html,body{ height:100%; overscroll-behavior:none; }
   body{ background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow:hidden; position:fixed; inset:0; width:100%; }
@@ -61,7 +65,9 @@
   nav a::after{ content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:currentColor; transition:width .3s ease; }
   nav a:hover::after{ width:100%; }
   nav a.here::after{ width:100%; background:var(--red); }
-  .lang-btn{ border:0; background:none; color:var(--ink); font:600 .78rem 'Inter',sans-serif; letter-spacing:.12em; cursor:pointer; margin-left:28px; transition:color .3s ease; }
+  /* 24 CSS px is the WCAG 2.2 AA floor for a pointer target; this sat at 15 */
+  .lang-btn{ border:0; background:none; color:var(--ink); font:600 .78rem 'Inter',sans-serif; letter-spacing:.12em; cursor:pointer; margin-left:28px; transition:color .3s ease;
+    display:inline-flex; align-items:center; min-height:30px; padding:0 5px; }
   header.on-dark .lang-btn{ color:#fff; }
   .nav-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px;
     width:34px; height:34px; padding:0; margin-left:14px; border:0; background:none; cursor:pointer; }
@@ -271,7 +277,8 @@
   /* Archivo is display only — the address and phone are body text */
   .contact-right strong{ font-size:.98rem; font-weight:500; line-height:1.5; }
   .contact-links{ display:flex; gap:18px; margin-top:8px; }
-  .contact-links a{ font-size:.82rem; border-bottom:1px solid var(--line); padding-bottom:3px; }
+  /* the hit area grows upward so the underline stays close to the word */
+  .contact-links a{ font-size:.82rem; border-bottom:1px solid var(--line); padding:9px 0 3px; display:inline-block; }
 
   /* ---------- Utility bar (page counter) ---------- */
   /* the page counter is fixed in the bottom right, so content has to stop short of it */
@@ -607,8 +614,10 @@
   const navLinks=[...document.querySelectorAll('nav [data-goto]')];
   const darkIdx=new Set(slides.map((s,i)=>s.classList.contains('dark')?i:null).filter(v=>v!==null));
 
-  function setVh(){ document.documentElement.style.setProperty('--vh', window.innerHeight+'px'); }
-  setVh(); window.addEventListener('resize', setVh);
+  if(!(window.CSS && CSS.supports && CSS.supports('height','100dvh'))){
+    const setVh=()=>document.documentElement.style.setProperty('--vh', window.innerHeight+'px');
+    setVh(); window.addEventListener('resize', setVh);
+  }
 
   function updateChrome(){
     document.getElementById('pgNum').textContent=String(current+1).padStart(2,'0');
