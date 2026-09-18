@@ -56,7 +56,7 @@ iki yere birden bakmayı sağlamaya kalkarsa işlevini kaybeder.
 
 | Name | Hex | RGB | Kullanım |
 |------|-----|-----|----------|
-| Gray | #7C7C76 | rgb(124, 124, 118) | Kicker, metadata, tarih |
+| Gray | #6D6D68 | rgb(109, 109, 104) | Kicker, metadata, tarih |
 | Gray Light | #DBDBD6 | rgb(219, 219, 214) | Pasif işaretler, büyük hayalet rakamlar |
 | Line | #E2E2DD | rgb(226, 226, 221) | Saç teli çizgiler, ayraçlar |
 
@@ -71,6 +71,12 @@ ve hiçbir sunum koyu zemine geçmez.
 | Night | #0E0E0C | rgb(14, 14, 12) | Hero fotoğraf zemini |
 | Paper on Dark | #EDEDE8 | rgb(237, 237, 232) | Koyu zeminde başlık ve metin |
 | Gray on Dark | #A9A9A1 | rgb(169, 169, 161) | Koyu zeminde kicker ve metadata |
+| Red on Dark | #DE3F45 | rgb(222, 63, 69) | Koyu zeminde **küçük** kırmızı metin |
+
+Koyu zeminde kırmızı metin yazarken `--red` değil `--red-dk` kullanılır. Marka
+kırmızısı gece zeminde 3,73'te kalıyor; küçük punto için yetersiz. Büyük display
+metinlerde (hero'daki ×, Intersection'daki ×) ve metin olmayan ögelerde
+(gösterge çizgileri) marka kırmızısı olduğu gibi kullanılmaya devam eder.
 
 ### Erişilebilirlik
 
@@ -80,22 +86,23 @@ ve hiçbir sunum koyu zemine geçmez.
 |------|-------|------|--------------|-------------|
 | Ink #141412 | Paper | 17,20 | AAA | AAA |
 | Ink Soft #3A3A36 | Paper | 10,65 | AAA | AAA |
-| Gray #7C7C76 | Paper | 3,91 | **kalıyor** | AA |
+| Gray #6D6D68 | Paper | 4,85 | AA | AA |
+| Gray #6D6D68 | Paper Tint | 4,51 | AA | AA |
 | Red #D71920 | Paper | 4,83 | AA | AA |
 | Paper on Dark #EDEDE8 | Night | 16,45 | AAA | AAA |
 | Gray on Dark #A9A9A1 | Night | 8,17 | AAA | AAA |
-| Red #D71920 | Night | 3,73 | **kalıyor** | AA |
+| Red on Dark #DE3F45 | Night | 4,51 | AA | AA |
 
-İki bilinen zayıf nokta var; ikisi de şu an sitede mevcut:
+**Metin renklerinin tamamı AA'yı geçiyor.** Palet ilk yazıldığında iki zayıf
+nokta vardı ve ikisi de düzeltildi: Gray `#7C7C76` iken kâğıt zeminde 3,91'de
+kalıyordu, `#6D6D68` oldu; marka kırmızısı koyu zeminde 3,73'te kalıyordu, küçük
+metin için `--red-dk` eklendi. Her iki yeni değer de hem kâğıt hem ton zeminde
+sınırı geçecek şekilde hesaplandı, gözle seçilerek değil.
 
-1. **Gray (#7C7C76) küçük metinde AA'yı geçmiyor** (3,91 — gereken 4,5).
-   Kicker'lar ve "Aşağı kaydırın" notu bu renkte ve 0,8rem civarında. Okunabilir
-   ama sınırda. Uzun veya kritik bir metin bu renge verilmez; onun yerine
-   Ink Soft kullanılır. Kicker gibi kısa ve tekrar eden etiketlerde kabul
-   edilebilir.
-2. **Kırmızı koyu zeminde AA'yı geçmiyor** (3,73). Hero'daki künye etiketi
-   bu durumda. Küçük puntoda kırmızıyı koyu zemine yazarken dikkatli olun;
-   uzun metin için Paper on Dark tercih edilir.
+Tek bilinçli sapma: hero fotoğrafları 5,4 saniyede bir kendiliğinden dönüyor ve
+görünür bir durdurma düğmesi yok. Hareket azaltma tercihinde duruyor, ama tam
+kadraj bir açılışa düğme koymanın tasarım bedeli kuralın kazancından ağır
+görüldü. Bilerek bırakılmıştır.
 
 ---
 

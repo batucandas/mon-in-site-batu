@@ -8,10 +8,11 @@
       "paper-tint": { "$value": "#EFEFEC", "$type": "color" },
       "ink": { "$value": "#141412", "$type": "color" },
       "ink-soft": { "$value": "#3A3A36", "$type": "color" },
-      "gray": { "$value": "#7C7C76", "$type": "color" },
+      "gray": { "$value": "#6D6D68", "$type": "color" },
       "gray-light": { "$value": "#DBDBD6", "$type": "color" },
       "line": { "$value": "#E2E2DD", "$type": "color" },
       "red": { "$value": "#D71920", "$type": "color" },
+      "red-on-dark": { "$value": "#DE3F45", "$type": "color" },
       "night": { "$value": "#0E0E0C", "$type": "color" },
       "paper-on-dark": { "$value": "#EDEDE8", "$type": "color" },
       "gray-on-dark": { "$value": "#A9A9A1", "$type": "color" }
@@ -32,7 +33,8 @@
       "accent": { "$value": "{primitive.color.red}", "$type": "color" },
       "surface-dark": { "$value": "{primitive.color.night}", "$type": "color" },
       "text-on-dark": { "$value": "{primitive.color.paper-on-dark}", "$type": "color" },
-      "text-muted-on-dark": { "$value": "{primitive.color.gray-on-dark}", "$type": "color" }
+      "text-muted-on-dark": { "$value": "{primitive.color.gray-on-dark}", "$type": "color" },
+      "accent-on-dark": { "$value": "{primitive.color.red-on-dark}", "$type": "color" }
     },
     "tracking": {
       "display": { "$value": "-0.045em", "$type": "dimension" },
@@ -49,9 +51,7 @@
   },
   "accessibility": {
     "measured": "WCAG 2.1 contrast ratios against their intended ground",
-    "failsNormalText": [
-      { "color": "#7C7C76", "on": "#F7F7F5", "ratio": 3.91, "guidance": "labels and kickers only, never body copy" },
-      { "color": "#D71920", "on": "#0E0E0C", "ratio": 3.73, "guidance": "short tags only, never body copy" }
-    ]
+    "failsNormalText": [],
+    "note": "Every text colour clears AA. Two values were corrected to get there: gray moved from #7C7C76 (3.91 on paper) to #6D6D68, and red-on-dark was added because the brand red only reaches 3.73 on the night ground. Use red-on-dark for small red text on dark surfaces; the brand red stays as-is for large display type and non-text marks."
   }
 }

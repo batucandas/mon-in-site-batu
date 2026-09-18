@@ -15,12 +15,14 @@
   --ink-soft: #3A3A36;
 
   /* neutrals */
-  --gray: #7C7C76;
+  --gray: #6D6D68;
   --gray-light: #DBDBD6;
   --line: #E2E2DD;
 
   /* accent — never a large fill */
   --red: #D71920;
+  /* the brand red only reaches 3.73:1 on the dark ground, so small red text there uses this */
+  --red-dk: #DE3F45;
 
   /* dark ground: the site hero only, no other surface */
   --night: #0E0E0C;
