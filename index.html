@@ -316,6 +316,10 @@
     header.nav-open .nav-toggle span:last-child{ transform:translateY(-3.25px) rotate(-45deg); }
     header.nav-open .brand-name, header.nav-open .lang-btn{ color:var(--ink); }
     header.nav-open .brand img{ filter:none; }
+    /* the bar has no ground of its own, so over the dark hero these dark marks
+       would land on a dark photograph; the open menu gives the bar the panel's */
+    header.nav-open{ background:rgba(247,247,245,.92);
+      backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
     .lang-btn{ margin-left:14px; }
     /* the header is fixed, so centred slide content needs to clear it or it slides underneath */
     .discipline, .exhibition, .case, .carousel-sec, .philosophy, .people, .statement, .intersection, .why, .contact{ padding-left:20px; padding-right:20px; padding-top:72px; }
