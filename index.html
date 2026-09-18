@@ -299,14 +299,18 @@
     nav{ display:none; }
     .nav-toggle{ display:flex; }
     /* the panel is always light, so its links and bars stay dark even over the dark hero */
+    /* The panel hangs under the toggle instead of spanning the screen: the labels are
+       short, so full width left a field of empty paper, and six generous rows took
+       nearly half the phone. Text sits flush right, echoing the toggle above it. */
     header.nav-open nav{ display:flex; flex-direction:column; gap:0;
-      position:fixed; left:0; right:0; top:64px; z-index:490;
-      max-height:calc(100% - 64px); overflow-y:auto;
-      background:rgba(247,247,245,.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--line); padding:4px 20px 12px; }
-    header.nav-open .nav-scrim{ display:block; position:fixed; left:0; right:0; top:64px; bottom:0;
-      z-index:480; background:rgba(20,20,18,.34); }
-    header.nav-open nav a{ color:var(--ink); font-size:1.02rem; padding:15px 2px;
+      position:fixed; top:62px; right:20px; left:auto; z-index:490;
+      min-width:158px; max-width:min(70vw,250px); text-align:right;
+      max-height:calc(100vh - 78px); max-height:calc(100dvh - 78px); overflow-y:auto;
+      background:rgba(247,247,245,.94); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      border:1px solid var(--line); padding:2px 0; }
+    header.nav-open .nav-scrim{ display:block; position:fixed; inset:0;
+      z-index:480; background:rgba(20,20,18,.28); }
+    header.nav-open nav a{ color:var(--ink); font-size:.95rem; padding:11px 16px;
       border-bottom:1px solid var(--line); }
     header.nav-open nav a.x{ color:var(--red); }
     header.nav-open nav a:last-child{ border-bottom:0; }
